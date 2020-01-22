@@ -28,8 +28,8 @@ const data = [
     publicSchoolRank:[91],
     bestCityToLive:[118],
     bestJobMarket:[135],
-    safeCities:[112],
-    chickens:[1,]
+    safestCities:[112],
+    chickens:[1]
   },
   {
     city:['Boise'],
@@ -61,7 +61,7 @@ const data = [
     bestCityToLive:[41],
     bestJobMarket:[29],
     safestCities:[17],
-    chickens:[1,]
+    chickens:[1]
   },
   {
     city:['Denver'],
@@ -93,7 +93,7 @@ const data = [
     bestCityToLive:[57],
     bestJobMarket:[25],
     safestCities:[167],
-    chickens:[1,]
+    chickens:[1]
   },
   {
     city:['Eugene'],
@@ -125,7 +125,7 @@ const data = [
     bestCityToLive:[131],
     bestJobMarket:[null],
     safestCities:[null],
-    chickens:[1,]
+    chickens:[1]
   },
   {
     city:['Fort Collins'],
@@ -157,7 +157,7 @@ const data = [
     bestCityToLive:[25],
     bestJobMarket:[null],
     safestCities:[null],
-    chickens:[1,]
+    chickens:[1]
   },
   {
     city:['Los Angeles'],
@@ -189,7 +189,7 @@ const data = [
     bestCityToLive:[179],
     bestJobMarket:[60],
     safestCities:[143],
-    chickens:[1,]
+    chickens:[1]
   },
   {
     city:['Oakland'],
@@ -221,7 +221,7 @@ const data = [
     bestCityToLive:[123],
     bestJobMarket:[121],
     safestCities:[163],
-    chickens:[1,]
+    chickens:[1]
   },
   {
     city:['Portland'],
@@ -253,7 +253,7 @@ const data = [
     bestCityToLive:[53],
     bestJobMarket:[40],
     safestCities:[33],
-    chickens:[1,]
+    chickens:[1]
   },
   {
     city:['Reno'],
@@ -285,7 +285,7 @@ const data = [
     bestCityToLive:[85],
     bestJobMarket:[92],
     safestCities:[81],
-    chickens:[1,]
+    chickens:[1]
   },
   {
     city:['Sacramento'],
@@ -317,7 +317,7 @@ const data = [
     bestCityToLive:[120],
     bestJobMarket:[41],
     safestCities:[110],
-    chickens:[1,]
+    chickens:[1]
   },
   {
     city:['Salt Lake City'],
@@ -349,7 +349,7 @@ const data = [
     bestCityToLive:[55],
     bestJobMarket:[18],
     safestCities:[127],
-    chickens:[1,]
+    chickens:[1]
   },
   {
     city:['Seattle'],
@@ -381,7 +381,7 @@ const data = [
     bestCityToLive:[16],
     bestJobMarket:[17],
     safestCities:[159],
-    chickens:[1,]
+    chickens:[1]
   },
   {
     city:['Tacoma'],
@@ -413,7 +413,7 @@ const data = [
     bestCityToLive:[133],
     bestJobMarket:[80],
     safestCities:[131],
-    chickens:[1,]
+    chickens:[1]
   },
   {
     city:['Tempe'],
@@ -445,7 +445,7 @@ const data = [
     bestCityToLive:[35],
     bestJobMarket:[20],
     safestCities:[43],
-    chickens:[1,]
+    chickens:[1]
   },
   {
     city:['Tucson'],
@@ -477,7 +477,7 @@ const data = [
     bestCityToLive:[134],
     bestJobMarket:[102],
     safestCities:[161],
-    chickens:[1,]
+    chickens:[1]
   },
   {
     city:['Austin'],
@@ -509,7 +509,7 @@ const data = [
     bestCityToLive:[24],
     bestJobMarket:[11],
     safestCities:[149],
-    chickens:[1,]
+    chickens:[1]
   },
   {
     city:['Santa Fe'],
@@ -541,7 +541,7 @@ const data = [
     bestCityToLive:[null],
     bestJobMarket:[null],
     safestCities:[null],
-    chickens:[2,]
+    chickens:[2]
   },
   {
     city:['Las Vegas'],
@@ -573,7 +573,7 @@ const data = [
     bestCityToLive:[145],
     bestJobMarket:[126],
     safestCities:[169],
-    chickens:[1,]
+    chickens:[1]
   },
   {
     city:['Spokane'],
@@ -605,7 +605,7 @@ const data = [
     bestCityToLive:[144],
     bestJobMarket:[117],
     safestCities:[86],
-    chickens:[1,]
+    chickens:[1]
   },
   {
     city:['Flagstaff'],
@@ -637,7 +637,7 @@ const data = [
     bestCityToLive:[null],
     bestJobMarket:[null],
     safestCities:[null],
-    chickens:[2,]
+    chickens:[2]
   },
   {
     city:['Ogden'],
@@ -669,7 +669,7 @@ const data = [
     bestCityToLive:[null],
     bestJobMarket:[null],
     safestCities:[null],
-    chickens:[2,]
+    chickens:[2]
   },
   {
     city:['Minneapolis'],
@@ -701,7 +701,7 @@ const data = [
     bestCityToLive:[26],
     bestJobMarket:[24],
     safestCities:[98],
-    chickens:[1,]
+    chickens:[1]
   },
   {
     city:['Washington'],
@@ -733,7 +733,7 @@ const data = [
     bestCityToLive:[47],
     bestJobMarket:[51],
     safestCities:[166],
-    chickens:[2,]
+    chickens:[2]
   },
   {
     city:['Nashville'],
@@ -765,7 +765,7 @@ const data = [
     bestCityToLive:[93],
     bestJobMarket:[75],
     safestCities:[80],
-    chickens:[1,]
+    chickens:[1]
   },
   {
     city:['Chattanooga'],
@@ -797,7 +797,7 @@ const data = [
     bestCityToLive:[132],
     bestJobMarket:[88],
     safestCities:[175],
-    chickens:[2,]
+    chickens:[2]
   },
   {
     city:['Asheville'],
@@ -829,7 +829,7 @@ const data = [
     bestCityToLive:[null],
     bestJobMarket:[null],
     safestCities:[null],
-    chickens:[2,]
+    chickens:[2]
   },
   {
     city:['Charlotte'],
@@ -861,7 +861,7 @@ const data = [
     bestCityToLive:[38],
     bestJobMarket:[68],
     safestCities:[67],
-    chickens:[1,]
+    chickens:[1]
   },
   {
     city:['Durham'],
@@ -893,7 +893,7 @@ const data = [
     bestCityToLive:[61],
     bestJobMarket:[96],
     safestCities:[23],
-    chickens:[1,]
+    chickens:[1]
   },
   {
     city:['Raleigh'],
@@ -925,7 +925,7 @@ const data = [
     bestCityToLive:[18],
     bestJobMarket:[65],
     safestCities:[47],
-    chickens:[1,]
+    chickens:[1]
   },
   {
     city:['Burlington'],
@@ -957,7 +957,7 @@ const data = [
     bestCityToLive:[null],
     bestJobMarket:[69],
     safestCities:[13],
-    chickens:[2,]
+    chickens:[2]
   },
   {
     city:['Manchester'],
@@ -989,7 +989,7 @@ const data = [
     bestCityToLive:[205],
     bestJobMarket:[22],
     safestCities:[28],
-    chickens:[2,]
+    chickens:[2]
   },
   {
     city:['Portland'],
@@ -1021,7 +1021,7 @@ const data = [
     bestCityToLive:[null],
     bestJobMarket:[7],
     safestCities:[9],
-    chickens:[2,]
+    chickens:[2]
   },
   {
     city:['San Diego'],
@@ -1053,7 +1053,7 @@ const data = [
     bestCityToLive:[46],
     bestJobMarket:[30],
     safestCities:[91],
-    chickens:[1,]
+    chickens:[1]
   },
   {
     city:['Missoula'],
@@ -1085,7 +1085,7 @@ const data = [
     bestCityToLive:[null],
     bestJobMarket:[137],
     safestCities:[63],
-    chickens:[1,]
+    chickens:[1]
   }
 ];
 const dataSources = {
@@ -1120,15 +1120,13 @@ const dataSources = {
   safestCities:'https:[//wallethub.com/edu/safest-cities-in-america/41926/',
   chickens:'https:[//billingsbackyardhens.wordpress.com/2012/03/07/major-us-cities-and-nearby-states-allowing-urban-hens/'
 };
-const rankOrder = [null,null,0,0,0,1,0,1,0,0,0,1,1,0,0,0,0,1,1,0,1,1,1,1,0,1,1,1,1,0];
+const rankOrder = [null,null,0,0,0,1,0,1,0,0,0,1,1,0,0,0,0,1,1,0,1,1,1,1,0,1,1,1,1,1];
 const dataKeys = Object.keys(dataSources);
 let temp = [];
 let testSort = [];
 let ranks = [];
-// Consider consolidating dataSources, dataKeys, rankOrder, and inverseRankOrder[for the overall ranking formula] into a single object of arrays.
 
-// Why won't the loop accept dataKeys.length? It still has two loops to go
-for(let j=0;j<dataKeys.length-2;j++){
+for(let j=0;j<dataKeys.length;j++){
   if(!isNaN(data[0][dataKeys[j]])){
     data.forEach((item,i)=>{
       temp.push(data[i][dataKeys[j]][0]);
@@ -1147,15 +1145,9 @@ for(let j=0;j<dataKeys.length-2;j++){
   temp = [];
   testSort = [];
   ranks = [];
-  } else {continue;} 
+  } 
 }
-console.log(data[3]);
-
-// let test = [];
-// data.forEach((item,i)=>{
-//   test.push(data[i].westOrRest[1]);
-// })
-// console.log(test);
+// console.log(data[33]);
 
 // count all the values greater than null. This is necessary for the formula that will produce a weighted score: (100 - below + rank) * weight. The problem with this formula is that it reverses the rank order so as to maximize score before averaging. Will need to decide how to approach that in js.
 // let count = 0;
