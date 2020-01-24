@@ -2,22 +2,52 @@ body {
   max-width: 60%;
   margin-left: auto;
   margin-right: auto;
-  background-color: beige;
+  background-color: #FFFDF7;
 }
 
 section {
-  border:2px solid darkslategrey;
+  border:2px solid #B7D8E8;
   border-radius: 7px;
-  background-color: floralwhite;
-  padding: 5px;
+  background-color: transparent;
   vertical-align: top;
+  padding: 0px;
   margin-bottom: 10px;
+  position: relative;
+  z-index: 100;
 }
 
 header {
-  border:2px solid darkslategrey;
-  border-radius: 7px;
-  vertical-align: top;
+  background-color: transparent;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  padding: 5px;
+  margin: 1px;
+}
+
+.sectionHead {
+  background-color: #C9EDFF;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  padding-left: 5px;
+  /* margin-top: -20px;
+  margin-bottom: -10px; */
+}
+
+.metric {
+  background-color: #FFFEFB;
+  position: relative;
+}
+
+.top10 {
+  border: 1px solid darkslategrey;
+  padding-left: 2px;
+  padding-right: 2px;
+  color: darkslategrey;
+  font-weight: bold;
+  border-radius: 2px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 
 /* The switch - the box around the slider */
@@ -25,7 +55,7 @@ header {
   position: relative;
   display: inline-block;
   width: 50px;
-  height: 25px;
+  height: 20px;
   margin: 5px;
 }
 
@@ -44,7 +74,7 @@ header {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: pink;
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -52,7 +82,7 @@ header {
 .slider:before {
   position: absolute;
   content: "";
-  height: 16px;
+  height: 12px;
   width: 16px;
   left: 4px;
   bottom: 4px;
@@ -62,11 +92,11 @@ header {
 }
 
 input:checked + .slider {
-  background-color: darkslategrey;
+  background-color: mediumaquamarine;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px darkslategrey;
+  box-shadow: 0 0 1px mediumaquamarine;
 }
 
 input:checked + .slider:before {
@@ -81,5 +111,5 @@ input:checked + .slider:before {
 }
 
 .slider.round:before {
-  border-radius: 45%;
+  border-radius: 40%;
 }

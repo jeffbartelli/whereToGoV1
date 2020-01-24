@@ -11,35 +11,41 @@
 <body>
   <section id="header"></section>
   <section id="intro">
-    <header>
-      <h1>Where To Live</h1>
-    </header>
-    <p>Are you thinking about moving but you don't know where? Take advantage of the Where To Live app! Using the options below you can determine which city is right for you.</p>
-    <p>For each group of settings below you can turn individual settings on or off, and you can adjust how important each setting is for you. The rankings below will adjust as you go!</p>
+    <div class="sectionHead"><h2>Where To Live</h2></div>
+      <p>Are you thinking about moving but you don't know where? Take advantage of the Where To Live app! Using the options below you can determine which city is right for you.</p>
+      <p>For each group of settings below you can turn individual settings on or off, and you can adjust how important each setting is for you. The rankings below will adjust as you go!</p>
   </section>
   <section id="top10">
-    <header>
-      <h1>Top 10</h1>
-    </header>
+    <div class="sectionHead"><h2>Top 10</h2></div>
+    <div id="rankings"></div>
   </section>
   <section id="profile">
-    <header>
-      <h1>City Details</h1>
-    </header>
-      <form action="" id="">
+    <div class="sectionHead"><h2>Demographics</h2></div>
+    <form action="" id="">
+      <label class="switch">
+        <input type="checkbox" onchange="" value="1">
+        <span class="slider round"></span>
+      </label>
+      <input type="number" value="100" max="100" min="0" maxlength="3" onchange="" required />
+    </form>
+  </section>
+  <section id="municipal">
+    <div class="sectionHead"><h2>Municipal Metrics</h2></div>
+    <div class="metric">
+      <form action="" class="">
+        <h2 class="name">Metric Name</h2>
+        <h4 class="description">Description</h4class="">
+        <h4 class="source">Source</h4>
+        <h4 class="rank">Rank</h4>
+        <span class="top10">Top 10</span>
         <label class="switch">
           <input type="checkbox" onchange="" value="1">
           <span class="slider round"></span>
         </label>
-        <input type="number" value="100" max="100" min="0" maxlength="3" required onchange="" />
+        <input type="number" value="100" max="100" min="0" maxlength="3" onchange="" class="weight" required />
       </form>
-    
-  </section>
-  <section id="municipal">
-    
-  </section>
-  <section id="demographic">
-
+    </div>
+    <div class="metric"></div>
   </section>
   <section id="weather">
 
