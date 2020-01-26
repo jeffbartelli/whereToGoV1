@@ -7,7 +7,7 @@ body {
 
 section {
   border:2px solid #B7D8E8;
-  border-radius: 7px;
+  border-radius: 5px;
   background-color: transparent;
   vertical-align: top;
   padding: 0px;
@@ -18,45 +18,115 @@ section {
 
 header {
   background-color: transparent;
-  border-top-left-radius: 7px;
-  border-top-right-radius: 7px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   padding: 5px;
   margin: 1px;
 }
 
 .sectionHead {
   background-color: #C9EDFF;
-  border-top-left-radius: 7px;
-  border-top-right-radius: 7px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   padding-left: 5px;
-  /* margin-top: -20px;
-  margin-bottom: -10px; */
+  font-size: larger;
+  font-weight: bold;
+
+}
+#rankings {
+  display: inline-block;
+  width: 100%;
 }
 
+#rank10 { 
+  float:left;  
+  background:white; 
+  width:33%; 
+  height:auto;
+} 
+#rank20 { 
+  float:left;  
+  background:white; 
+  width:34%; 
+  height:auto; 
+} 
+#rank30 { 
+  float:right; 
+  background:white; 
+  width:33%; 
+  height:auto; 
+} 
+
 .metric {
-  background-color: #FFFEFB;
-  position: relative;
+  padding: 3px;
+  border-bottom: 1px solid #B7D8E8;
+  /* display: none; */
+}
+
+.metricHead {
+  font-size: large;
+}
+
+.expand {
+  border: 2px solid steelblue;
+  background-color: white;
+  border-radius: 100%;
+  padding: 0 3px 0 4px;
+  color: steelblue;
+  font-weight: 700;
+  font-size: small;
+}
+
+/* All the contents of the metric top container */
+.top {
+  margin: 3px 0 3px 0;
 }
 
 .top10 {
-  border: 1px solid darkslategrey;
-  padding-left: 2px;
-  padding-right: 2px;
-  color: darkslategrey;
-  font-weight: bold;
-  border-radius: 2px;
-  position: absolute;
-  top: 5px;
-  right: 5px;
+  border: 2px solid #B7D8E8;
+  border-radius: 100%;
+  color: #B7D8E8;
+  padding: 0 4px 0 4px;
+  margin: 0 0 0 3px;
+  font-weight: 700;
+  font-size: small;
+  float: right;
+}
+
+input[type=number]{
+  width: 40px;
+  border-color: #B7D8E8;
+  border-style: solid;
+}
+
+.weight {
+  position: relative;
+  display: inline-block;
+  float: right;
+  height: 100%;
+  width: 100%;
+  margin-right: 2px;
+}
+
+/* All the contents of the metric bottom container */
+.score {
+  float: right;
+  margin-right: 3px;
+}
+
+.rank {
+  float: right;
+  
 }
 
 /* The switch - the box around the slider */
 .switch {
   position: relative;
   display: inline-block;
+  float: right;
   width: 50px;
-  height: 20px;
-  margin: 5px;
+  height: 22px;
+  margin: 1px;
 }
 
 /* Hide default HTML checkbox */
@@ -82,7 +152,7 @@ header {
 .slider:before {
   position: absolute;
   content: "";
-  height: 12px;
+  height: 14px;
   width: 16px;
   left: 4px;
   bottom: 4px;
@@ -92,11 +162,11 @@ header {
 }
 
 input:checked + .slider {
-  background-color: mediumaquamarine;
+  background-color: #B7D8E8;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px mediumaquamarine;
+  box-shadow: 0 0 1px #B7D8E8;
 }
 
 input:checked + .slider:before {

@@ -1088,40 +1088,341 @@ const data = [
     chickens:[1]
   }
 ];
-const dataSources = {
-  city:null,
-  state:null,
-  cityPop:'https:[//www.biggestuscities.com/',
-  metroPop:'https:[//en.wikipedia.org/wiki/List_of_metropolitan_statistical_areas',
-  popDensity:'http:[//www.governing.com/gov-data/population-density-land-area-cities-map.html',
-  percentWhite:null,
-  folfCourses:'https:[//www.dgcoursereview.com/',
-  distBeach:null,
-  sportRoutes:'https:[//www.mountainproject.com//map',
-  climbingGyms:'http:[//www.climbingbusinessjournal.com/directory/map/',
-  sunshine:'https:[//www.nerdwallet.com/blog/sunniest-cities/',
-  precip:'https:[//nl.batchgeo.com/map/us-cities-rainy-days-per-year',
-  westOrRest:null,
-  femaleRatio:'http:[//www.bestplaces.net/docs/studies/solocities_gap1.aspx',
-  walkScore:'https:[//www.walkscore.com/cities-and-neighborhoods/',
-  transitScore:'https:[//www.walkscore.com/cities-and-neighborhoods/',
-  bikeScore:'https:[//www.walkscore.com/cities-and-neighborhoods/',
-  allTransit:'https:[//alltransit.cnt.org/rankings/',
-  bicyclingDotCom:'https:[//www.bicycling.com/culture/news/the-50-best-bike-cities-of-2016',
-  percentBikeCommuters:'https:[//www.census.gov/library/publications/2014/acs/acs-25.html',
-  cityFiscalHealth:'http:[//www.thefiscaltimes.com/2017/01/09/How-Strong-Are-Your-Citys-Finances-116-US-Cities-Ranked',
-  stateSolarLaws:'https:[//solarpowerrocks.com/2017-state-solar-power-rankings/',
-  citySolarLaws:'https:[//environmentamerica.org/sites/environment/files/reports/EA_shiningcities2016_scrn.pdf',
-  stateFiscalHealth:'https:[//www.mercatus.org/statefiscalrankings',
-  universityCount:'http:[//www.univsearch.com/state.php',
-  publicSchoolRank:'https:[//www.niche.com/places-to-live/search/cities-with-the-best-public-schools/',
-  bestCityToLive:'https:[//www.niche.com/places-to-live/search/best-cities/',
-  bestJobMarket:'https:[//wallethub.com/edu/best-cities-for-jobs/2173/',
-  safestCities:'https:[//wallethub.com/edu/safest-cities-in-america/41926/',
-  chickens:'https:[//billingsbackyardhens.wordpress.com/2012/03/07/major-us-cities-and-nearby-states-allowing-urban-hens/'
-};
+let dataSources = [
+  {
+    section:"weather",
+    id:"sunshine",
+    metricName:"Days of Sunshine",
+    description:"Based on NOAA data, this metric is the average percentage of possible sunshine.",
+    source:"https:[//www.nerdwallet.com/blog/sunniest-cities/",
+    score:null,
+    scoreLabel:"Days Per Year: ",
+    weight:100,
+    active:null
+  },
+  {
+    section:"weather",
+    id:"precip",
+    metricName:"Days of Precipitation",
+    description:"Average number of days that a city received significant precipitation.",
+    source:"https:[//nl.batchgeo.com/map/us-cities-rainy-days-per-year",
+    score:null,
+    scoreLabel:"Day Per Year: ",
+    weight:100,
+    active:null
+  },
+  {
+    section:"transit",
+    id:"bikeScore",
+    metricName:"walkscore.com Bike Score",
+    description:"A variable that considers the total amount and density of bike lanes, intensity and quantity of hills, bike commuting, bike shares, and connectivity.",
+    source:"https://www.walkscore.com/cities-and-neighborhoods/",
+    score:null,
+    scoreLabel:"Max Score: ",
+    weight:100,
+    active:null
+  },
+  {
+    section:"transit",
+    id:"bikeCommuters",
+    metricName:"Percent of Bike Commuters",
+    description:"The percentage of people who reported bike commuting for each city as of the 2010 Census.",
+    source:"https://www.census.gov/library/publications/2014/acs/acs-25.html",
+    score:null,
+    scoreLabel:"Commuters: ",
+    weight:100,
+    active:null
+  },
+  {
+    section:"transit",
+    id:"walkScore",
+    metricName:"walkscore.com Walk Score",
+    description:"Analyzes distances between locations and amenities to determine how favorable a walk would be. Also factors in pedestrian friendly infrastructure and policy, population density, intersection density, and block length.",
+    source:"https://www.walkscore.com/cities-and-neighborhoods/",
+    score:null,
+    scoreLabel:"Score: ",
+    weight:100,
+    active:null
+  },
+  {
+    section:"transit",
+    id:"transitScore",
+    metricName:"walkscore.com Transit Score",
+    description:"Analyzes route density, transit type, frequency, and distance to a stop for a region.",
+    source:"https://www.walkscore.com/cities-and-neighborhoods/",
+    score:null,
+    scoreLabel:"Score: ",
+    weight:100,
+    active:null
+  },
+  {
+    section:"transit",
+    id:"mobility",
+    metricName:"AllTransit Rankings",
+    description:"This is the AllTransit Performance Score, which aggregates route and performance data for the vast majority of transit systems within the US. This data is parsed to provide area-specific ratings from the neighborhood to regional level.",
+    source:"https://alltransit.cnt.org/rankings/",
+    score:null,
+    scoreLabel:"Rank: ",
+    weight:100,
+    active:null
+  },
+  {
+    section:"amenities",
+    id:"folf",
+    metricName:"Disc Golf Courses",
+    description:"Number of disc golf courses within a metropolitan area.",
+    source:"https://www.dgcoursereview.com/",
+    score:null,
+    scoreLabel:"# of Courses: ",
+    weight:100,
+    active:null
+  },
+  {
+    section:"amenities",
+    id:"gyms",
+    metricName:"Climbing Gyms",
+    description:"The number of climbing gyms within city limits.",
+    source:"http://www.climbingbusinessjournal.com/directory/map/",
+    score:null,
+    scoreLabel:"# of Gyms: ",
+    weight:100,
+    active:null
+  },
+  {
+    section:"amenities",
+    id:"sportRoutes",
+    metricName:"Outdoor Climbing",
+    description:"An approximate count of sport routes within 200 miles of the city center.",
+    source:"https://www.mountainproject.com//map",
+    score:null,
+    scoreLabel:"# of Routes: ",
+    weight:100,
+    active:null
+  },
+  {
+    section:"amenities",
+    id:"distToBeach",
+    metricName:"Distance to the Nearest Beach",
+    description:"Based on a google maps direction search for each city to the closest ocean beach.",
+    source:null,
+    score:null,
+    scoreLabel:"Driving Miles: ",
+    weight:100,
+    active:null
+  },
+  {
+    section:"amenities",
+    id:"chickens",
+    metricName:"Urban Chickens",
+    description:"Is it legal to keep chickens within city limits?",
+    source:"https://billingsbackyardhens.wordpress.com/2012/03/07/major-us-cities-and-nearby-states-allowing-urban-hens/",
+    score:null,
+    scoreLabel:"Legal: ",
+    weight:100,
+    active:null
+  },
+  {
+    section:"municipal",
+    id:"jobMarket",
+    metricName:"Job Market",
+    description:"Looks at job openings, job market growth, salaries, unemployment/underemployment, retirement resources, commute time, median income, job satisfaction, and more.",
+    source:"https://wallethub.com/edu/best-cities-for-jobs/2173/",
+    score:null,
+    scoreLabel:"Study Rank: ",
+    weight:100,
+    active:null
+  },
+  {
+    section:"municipal",
+    id:"safety",
+    metricName:"City-Wide Safety",
+    description:"A variable that aggregates 35 relevant metrics centered on three dimensions Home & Community Safety, Financial Safety, and Natural Distaster Risk.",
+    source:"https://wallethub.com/edu/safest-cities-in-america/41926/",
+    score:null,
+    scoreLabel:"Study Rank: ",
+    weight:100,
+    active:null
+  },
+  {
+    section:"municipal",
+    id:"lifeQuality",
+    metricName:"Quality of Life",
+    description:"A diverse variable that includes metrics on higher education attainment, cost of living, schools, crime, outdoor activities, nightlife, health and fitness, and several others.",
+    source:"https://www.niche.com/places-to-live/search/best-cities/",
+    score:null,
+    scoreLabel:"Study Rank: ",
+    weight:100,
+    active:null
+  },
+  {
+    section:"municipal",
+    id:"schools",
+    metricName:"Public Schools",
+    description:"Uses U.S. Census data to analyze public school performancy weighted by size of student body. Serves as an analog for community quality and investment.",
+    source:"https://www.niche.com/places-to-live/search/cities-with-the-best-public-schools/",
+    score:null,
+    scoreLabel:"Study Ranks: ",
+    weight:100,
+    active:null
+  },
+  {
+    section:"municipal",
+    id:"universities",
+    metricName:"Number of Universities",
+    description:"An approximate count of accredited universities in a city.",
+    source:"http://www.univsearch.com/state.php",
+    score:null,
+    scoreLabel:"# of Universities: ",
+    weight:100,
+    active:null
+  },
+  {
+    section:"municipal",
+    id:"cityFiscal",
+    metricName:"City Fiscal Health",
+    description:"An index of several metrics, including: 1) General Fund balance over Expenditures; 2) Ratio of long term obligations over Government Revenue; 3) Ratio of Pension contributions over Government Revenue; 4) Unemployment; 5) Property Values.",
+    source:"http://www.thefiscaltimes.com/2017/01/09/How-Strong-Are-Your-Citys-Finances-116-US-Cities-Ranked",
+    score:null,
+    scoreLabel:"City Rank: ",
+    weight:100,
+    active:null
+  },
+  {
+    section:"municipal",
+    id:"stateFiscal",
+    metricName:"State Fiscal Health",
+    description:"Fiscal health is based on short- and long-term debt, unfunded pensions, and healthcare benefits.",
+    source:"https://www.mercatus.org/statefiscalrankings",
+    score:null,
+    scoreLabel:"State Rank: ",
+    weight:100,
+    active:null
+  },
+  {
+    section:"municipal",
+    id:"citySolar",
+    metricName:"City Solar Laws",
+    description:"A review of installed capacity and solar laws for a collection of 64 U.S. cities.",
+    source:"https://environmentamerica.org/sites/environment/files/reports/EA_shiningcities2016_scrn.pdf",
+    score:null,
+    scoreLabel:"Study Rank: ",
+    weight:100,
+    active:null
+  },
+  {
+    section:"municipal",
+    id:"stateSolar",
+    metricName:"State Solar Laws",
+    description:"A study based on the renewable portfolio standard, electricity cost, net metering, solar tax credit, solar rebates, and tax exemptions.",
+    source:"https://solarpowerrocks.com/2017-state-solar-power-rankings/",
+    score:null,
+    scoreLabel:"State Rank: ",
+    weight:100,
+    active:null
+  },
+  {
+    section:"profile",
+    id:"city",
+    metricName:"City",
+    description:null,
+    source:null,
+    score:null,
+    scoreLabel:null,
+    weight:null,
+    active:null
+  },
+  {
+    section:"profile",
+    id:"state",
+    metricName:"State",
+    description:null,
+    source:null,
+    score:null,
+    scoreLabel:null,
+    weight:null,
+    active:null
+  },
+  {
+    section:"profile",
+    id:"west",
+    metricName:"Western City?",
+    description:null,
+    source:null,
+    score:null,
+    scoreLabel:null,
+    weight:100,
+    active:null
+  },
+  {
+    section:"profile",
+    id:"cityPop",
+    metricName:"City Population",
+    description:null,
+    source:"https://www.biggestuscities.com/",
+    score:null,
+    scoreLabel:null,
+    weight:100,
+    active:null
+  },
+  {
+    section:"profile",
+    id:"metroPop",
+    metricName:"Metropolitan Population",
+    description:,
+    source:"https://en.wikipedia.org/wiki/List_of_metropolitan_statistical_areas",
+    score:null,
+    scoreLabel:null,
+    weight:100,
+    active:null
+  },
+  {
+    section:"profile",
+    id:"popDens",
+    metricName:"Population Density",
+    description:"Population density per square mile.",
+    source:"http://www.governing.com/gov-data/population-density-land-area-cities-map.html",
+    score:null,
+    scoreLabel:null,
+    weight:100,
+    active:null
+  },
+  {
+    section:"profile",
+    id:"percentWhite",
+    metricName:"Percent White",
+    description:"The percent of a city's population that is classified as only white.",
+    source:"",
+    score:null,
+    scoreLabel:"% White: ",
+    weight:100,
+    active:null
+  },
+  {
+    section:"profile",
+    id:"gender",
+    metricName:"Female Population",
+    description:"",
+    source:"http://www.bestplaces.net/docs/studies/solocities_gap1.aspx",
+    score:null,
+    scoreLabel:"% +/- Women: ",
+    weight:100,
+    active:null
+  }
+  // {
+  //   section:"",
+  //   id:"",
+  //   metricName:"",
+  //   description:"",
+  //   source:"",
+  //   score:null,
+  //   scoreLabel:"",
+  //   weight:100,
+  //   active:null
+  // },
+]
 const rankOrder = [null,null,0,0,0,1,0,1,0,0,0,1,1,0,0,0,0,1,1,0,1,1,1,1,0,1,1,1,1,1];
-const dataKeys = Object.keys(dataSources);
+
+const dataKeys = Object.keys(data[0]);
 let temp = [];
 let testSort = [];
 let ranks = [];

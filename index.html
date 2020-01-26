@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="style.css" rel="stylesheet" type="text/css" />
+  <script src="data.js"></script>
   <script src="script.js"></script>
   <title>Where To Live</title>
 </head>
@@ -16,36 +17,247 @@
       <p>For each group of settings below you can turn individual settings on or off, and you can adjust how important each setting is for you. The rankings below will adjust as you go!</p>
   </section>
   <section id="top10">
-    <div class="sectionHead"><h2>Top 10</h2></div>
-    <div id="rankings"></div>
-  </section>
-  <section id="profile">
-    <div class="sectionHead"><h2>Demographics</h2></div>
-    <form action="" id="">
-      <label class="switch">
-        <input type="checkbox" onchange="" value="1">
-        <span class="slider round"></span>
-      </label>
-      <input type="number" value="100" max="100" min="0" maxlength="3" onchange="" required />
-    </form>
+    <div class="sectionHead">
+      <label>Top 10</label>
+    </div>
+    <div id="rankings">
+      <div id="rank10">
+        <div id="1">1. </div>
+        <div id="2">2. </div>
+        <div id="3">3. </div>
+        <div id="4">4. </div>
+        <div id="5">5. </div>
+        <div id="6">6. </div>
+        <div id="7">7. </div>
+        <div id="8">8. </div>
+        <div id="9">9. </div>
+        <div id="10">10. </div>
+      </div>
+      <div id="rank20">
+        <div id="11">11. </div>
+        <div id="12">12. </div>
+        <div id="13">13. </div>
+        <div id="14">14. </div>
+        <div id="15">15. </div>
+        <div id="16">16. </div>
+        <div id="17">17. </div>
+        <div id="18">18. </div>
+        <div id="19">19. </div>
+        <div id="20">20. </div>
+      </div>
+      <div id="rank30">
+        <div id="21">21. </div>
+        <div id="22">22. </div>
+        <div id="23">23. </div>
+        <div id="24">24. </div>
+        <div id="25">25. </div>
+        <div id="26">26. </div>
+        <div id="27">27. </div>
+        <div id="28">28. </div>
+        <div id="29">29. </div>
+        <div id="30">30. </div>
+      </div>
+    </div>
   </section>
   <section id="municipal">
-    <div class="sectionHead"><h2>Municipal Metrics</h2></div>
-    <div class="metric">
-      <form action="" class="">
-        <h2 class="name">Metric Name</h2>
-        <h4 class="description">Description</h4class="">
-        <h4 class="source">Source</h4>
-        <h4 class="rank">Rank</h4>
-        <span class="top10">Top 10</span>
-        <label class="switch">
-          <input type="checkbox" onchange="" value="1">
-          <span class="slider round"></span>
-        </label>
-        <input type="number" value="100" max="100" min="0" maxlength="3" onchange="" class="weight" required />
-      </form>
+    <div class="sectionHead">
+      <span class="expand">+</span>
+      <label class="metricHead">Municipal Metrics</label>
     </div>
-    <div class="metric"></div>
+    <!-- Individual Metric Sections -->
+    <div class="metric ">
+      <div class="top">
+        <form action="" class="">
+          <span class="expand">+</span>
+          <label class="name">[Metric Name]</label>
+          <label class="switch">
+            <input type="checkbox" onchange="" value="1">
+            <span class="slider round"></span>
+          </label>
+          <input type="number" value="100" max="100" min="0" maxlength="3" onchange="" class="weight" required />
+      </div>
+      <div class="mid">
+        <label class="description">
+          Description: []
+        </label>
+      </div>
+      <div class="bottom">  
+        <label class="source" ><a href="#">Source</a></label>
+        <span class="top10">?</span>
+        <label class="rank">Rank: <span >[]</span></label>
+        <label class="score">[score]</label>
+      </form>
+      </div>
+    </div>
+        <!-- Individual Metric Sections -->
+        <div class="metric ">
+          <div class="top">
+            <form action="" class="">
+              <span class="expand">+</span>
+              <label class="name">[Metric Name]</label>
+              <label class="switch">
+                <input type="checkbox" onchange="" value="1">
+                <span class="slider round"></span>
+              </label>
+              <input type="number" value="100" max="100" min="0" maxlength="3" onchange="" class="weight" required />
+          </div>
+          <div class="mid">
+            <label>Description: <span class="description"></span>[]</label>
+          </div>
+          <div class="bottom">  
+            <label class="source" ><a href="#">Source</a></label>
+            <span class="top10">?</span>
+            <label class="rank">Rank: <span >[]</span></label>
+            <label class="score">[score]</label>
+          </form>
+          </div>
+        </div>
+    <!-- Individual Metric Sections -->
+    <div class="metric ">
+      <div class="top">
+        <form action="" class="">
+          <span class="expand">+</span>
+          <label class="name">[Metric Name]</label>
+          <label class="switch">
+            <input type="checkbox" onchange="" value="1">
+            <span class="slider round"></span>
+          </label>
+          <input type="number" value="100" max="100" min="0" maxlength="3" onchange="" class="weight" required />
+      </div>
+      <div class="mid">
+        <label>Description: <span class="description"></span>[]</label>
+      </div>
+      <div class="bottom">  
+        <label class="source" ><a href="#">Source</a></label>
+        <span class="top10">?</span>
+        <label class="rank">Rank: <span >[]</span></label>
+        <label class="score">[score]</label>
+      </form>
+      </div>
+    </div>
+    <!-- Individual Metric Sections -->
+    <div class="metric ">
+      <div class="top">
+        <form action="" class="">
+          <span class="expand">+</span>
+          <label class="name">[Metric Name]</label>
+          <label class="switch">
+            <input type="checkbox" onchange="" value="1">
+            <span class="slider round"></span>
+          </label>
+          <input type="number" value="100" max="100" min="0" maxlength="3" onchange="" class="weight" required />
+      </div>
+      <div class="mid">
+        <label>Description: <span class="description"></span>[]</label>
+      </div>
+      <div class="bottom">  
+        <label class="source" ><a href="#">Source</a></label>
+        <span class="top10">?</span>
+        <label class="rank">Rank: <span >[]</span></label>
+        <label class="score">[score]</label>
+      </form>
+      </div>
+    </div>
+    <!-- Individual Metric Sections -->
+    <div class="metric ">
+      <div class="top">
+        <form action="" class="">
+          <span class="expand">+</span>
+          <label class="name">[Metric Name]</label>
+          <label class="switch">
+            <input type="checkbox" onchange="" value="1">
+            <span class="slider round"></span>
+          </label>
+          <input type="number" value="100" max="100" min="0" maxlength="3" onchange="" class="weight" required />
+      </div>
+      <div class="mid">
+        <label>Description: <span class="description"></span>[]</label>
+      </div>
+      <div class="bottom">  
+        <label class="source" ><a href="#">Source</a></label>
+        <span class="top10">?</span>
+        <label class="rank">Rank: <span >[]</span></label>
+        <label class="score">[score]</label>
+      </form>
+      </div>
+    </div>
+    <!-- Individual Metric Sections -->
+    <div class="metric ">
+      <div class="top">
+        <form action="" class="">
+          <span class="expand">+</span>
+          <label class="name">[Metric Name]</label>
+          <label class="switch">
+            <input type="checkbox" onchange="" value="1">
+            <span class="slider round"></span>
+          </label>
+          <input type="number" value="100" max="100" min="0" maxlength="3" onchange="" class="weight" required />
+      </div>
+      <div class="mid">
+        <label>Description: <span class="description"></span>[]</label>
+      </div>
+      <div class="bottom">  
+        <label class="source" ><a href="#">Source</a></label>
+        <span class="top10">?</span>
+        <label class="rank">Rank: <span >[]</span></label>
+        <label class="score">[score]</label>
+      </form>
+      </div>
+    </div>
+    <!-- Individual Metric Sections -->
+    <div class="metric ">
+      <div class="top">
+        <form action="" class="">
+          <span class="expand">+</span>
+          <label class="name">[Metric Name]</label>
+          <label class="switch">
+            <input type="checkbox" onchange="" value="1">
+            <span class="slider round"></span>
+          </label>
+          <input type="number" value="100" max="100" min="0" maxlength="3" onchange="" class="weight" required />
+      </div>
+      <div class="mid">
+        <label>Description: <span class="description"></span>[]</label>
+      </div>
+      <div class="bottom">  
+        <label class="source" ><a href="#">Source</a></label>
+        <span class="top10">?</span>
+        <label class="rank">Rank: <span >[]</span></label>
+        <label class="score">[score]</label>
+      </form>
+      </div>
+    </div>
+    <!-- Individual Metric Sections -->
+    <div class="metric ">
+      <div class="top">
+        <form action="" class="">
+          <span class="expand">+</span>
+          <label class="name">[Metric Name]</label>
+          <label class="switch">
+            <input type="checkbox" onchange="" value="1">
+            <span class="slider round"></span>
+          </label>
+          <input type="number" value="100" max="100" min="0" maxlength="3" onchange="" class="weight" required />
+      </div>
+      <div class="mid">
+        <label>Description: <span class="description"></span>[]</label>
+      </div>
+      <div class="bottom">  
+        <label class="source" ><a href="#">Source</a></label>
+        <span class="top10">?</span>
+        <label class="rank">Rank: <span >[]</span></label>
+        <label class="score">[score]</label>
+      </form>
+      </div>
+    </div>
+    
+  </section>
+  <section id="profile">
+    <div class="sectionHead">
+      <h2>Demographics</h2>
+    </div>
+    <form action="" id="">
+    </form>
   </section>
   <section id="weather">
 
