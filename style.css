@@ -26,13 +26,17 @@ header {
 
 .sectionHead {
   background-color: #C9EDFF;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  padding-left: 5px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  padding: 0 0 3px 5px;
   font-size: larger;
   font-weight: bold;
-
 }
+
+#intro p {
+  background-color: mediumaquamarine;
+}
+
 #rankings {
   display: inline-block;
   width: 100%;
@@ -40,25 +44,24 @@ header {
 
 #rank10 { 
   float:left;  
-  background:white; 
+  background-color: khaki; 
   width:33%; 
   height:auto;
 } 
 #rank20 { 
   float:left;  
-  background:white; 
+  background-color: pink;
   width:34%; 
   height:auto; 
 } 
 #rank30 { 
   float:right; 
-  background:white; 
+  background-color: khaki; 
   width:33%; 
   height:auto; 
 } 
 
 .metric {
-  padding: 3px;
   border-bottom: 1px solid #B7D8E8;
   /* display: none; */
 }
@@ -69,28 +72,43 @@ header {
 
 .expand {
   border: 2px solid steelblue;
-  background-color: white;
+  background-color: lightcyan;
   border-radius: 100%;
   padding: 0 3px 0 4px;
   color: steelblue;
   font-weight: 700;
   font-size: small;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 /* All the contents of the metric top container */
 .top {
-  margin: 3px 0 3px 0;
+  background-color: salmon;
+  padding: 2px 3px 5px 3px;
+}
+
+.mid {
+  padding: 0 3px 0 3px;
+  background-color: palegoldenrod;
+}
+
+.bottom {
+  padding: 0 3px 3px 3px;
+  background-color: sandybrown;
 }
 
 .top10 {
   border: 2px solid #B7D8E8;
   border-radius: 100%;
   color: #B7D8E8;
+  background-color: lightcyan;
   padding: 0 4px 0 4px;
   margin: 0 0 0 3px;
   font-weight: 700;
   font-size: small;
   float: right;
+  cursor: pointer;
 }
 
 input[type=number]{
@@ -126,7 +144,6 @@ input[type=number]{
   float: right;
   width: 50px;
   height: 22px;
-  margin: 1px;
 }
 
 /* Hide default HTML checkbox */
