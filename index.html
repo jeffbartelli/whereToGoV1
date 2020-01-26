@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="style.css" rel="stylesheet" type="text/css" />
-  <script src="data.js"></script>
-  <script src="script.js"></script>
   <title>Where To Live</title>
 </head>
 <body>
@@ -59,15 +57,15 @@
       </div>
     </div>
   </section>
-  <section id="municipal">
+  <section id="municipal1">
     <div class="sectionHead">
       <span class="expand">+</span>
       <label class="metricHead">Municipal Metrics</label>
     </div>
     <!-- Individual Metric Sections -->
     <div class="metric ">
-      <div class="top">
-        <form action="" class="">
+      <form action="" class="">
+        <div class="top">
           <span class="expand">+</span>
           <label class="name">[Metric Name]</label>
           <label class="switch">
@@ -75,19 +73,21 @@
             <span class="slider round"></span>
           </label>
           <input type="number" value="100" max="100" min="0" maxlength="3" onchange="" class="weight" required />
-      </div>
-      <div class="mid">
-        <label class="description">
-          Description: []
-        </label>
-      </div>
-      <div class="bottom">  
-        <label class="source" ><a href="#">Source</a></label>
-        <span class="top10">?</span>
-        <label class="rank">Rank: <span >[]</span></label>
-        <label class="score">[score]</label>
+        </div>
+        <div class="mid">
+          <label class="description">
+            Description: []
+          </label>
+        </div>
+        <div class="bottom">  
+          <label class="source" >
+            <a href="#">Source</a>
+          </label>
+          <span class="top10">?</span>
+          <label class="rank">Rank: <span >[]</span></label>
+          <label class="score">[score]</label>
+        </div>
       </form>
-      </div>
     </div>
   </section>
 
@@ -151,5 +151,6 @@
     <div id="distToBeach"></div>
     <div id="chickens"></div>
   </section>
+  <script src="script.js"></script>
 </body>
 </html>
