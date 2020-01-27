@@ -84,18 +84,18 @@ header {
 
 /* All the contents of the metric top container */
 .top {
-  background-color: salmon;
+  background-color: mistyrose;
   padding: 2px 3px 5px 3px;
 }
 
 .mid {
   padding: 0 3px 0 3px;
-  background-color: palegoldenrod;
+  background-color: beige;
 }
 
 .bottom {
   padding: 0 3px 3px 3px;
-  background-color: sandybrown;
+  background-color: navajowhite;
 }
 
 .top10 {

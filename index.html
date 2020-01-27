@@ -14,143 +14,79 @@
       <p>Are you thinking about moving but you don't know where? Take advantage of the Where To Live app! Using the options below you can determine which city is right for you.</p>
       <p>For each group of settings below you can turn individual settings on or off, and you can adjust how important each setting is for you. The rankings below will adjust as you go!</p>
   </section>
+  <!-- Top10-30 is populated here from script.js -->
   <section id="top10">
     <div class="sectionHead">
       <label>Top 10</label>
     </div>
-    <div id="rankings">
-      <div id="rank10">
-        <div id="1">1. </div>
-        <div id="2">2. </div>
-        <div id="3">3. </div>
-        <div id="4">4. </div>
-        <div id="5">5. </div>
-        <div id="6">6. </div>
-        <div id="7">7. </div>
-        <div id="8">8. </div>
-        <div id="9">9. </div>
-        <div id="10">10. </div>
-      </div>
-      <div id="rank20">
-        <div id="11">11. </div>
-        <div id="12">12. </div>
-        <div id="13">13. </div>
-        <div id="14">14. </div>
-        <div id="15">15. </div>
-        <div id="16">16. </div>
-        <div id="17">17. </div>
-        <div id="18">18. </div>
-        <div id="19">19. </div>
-        <div id="20">20. </div>
-      </div>
-      <div id="rank30">
-        <div id="21">21. </div>
-        <div id="22">22. </div>
-        <div id="23">23. </div>
-        <div id="24">24. </div>
-        <div id="25">25. </div>
-        <div id="26">26. </div>
-        <div id="27">27. </div>
-        <div id="28">28. </div>
-        <div id="29">29. </div>
-        <div id="30">30. </div>
-      </div>
-    </div>
-  </section>
-  <section id="municipal1">
-    <div class="sectionHead">
-      <span class="expand">+</span>
-      <label class="metricHead">Municipal Metrics</label>
-    </div>
-    <!-- Individual Metric Sections -->
-    <div class="metric ">
-      <form action="" class="">
-        <div class="top">
-          <span class="expand">+</span>
-          <label class="name">[Metric Name]</label>
-          <label class="switch">
-            <input type="checkbox" onchange="" value="1">
-            <span class="slider round"></span>
-          </label>
-          <input type="number" value="100" max="100" min="0" maxlength="3" onchange="" class="weight" required />
-        </div>
-        <div class="mid">
-          <label class="description">
-            Description: []
-          </label>
-        </div>
-        <div class="bottom">  
-          <label class="source" >
-            <a href="#">Source</a>
-          </label>
-          <span class="top10">?</span>
-          <label class="rank">Rank: <span >[]</span></label>
-          <label class="score">[score]</label>
-        </div>
-      </form>
-    </div>
+    <div id="rankings"></div>
   </section>
 
-  
-  <section id="profile">
-    <div class="sectionHead">
-      <span class="expand">+</span>
-      <label class="metricHead">Profile</label>
-    </div>
-    <div id="city"></div>
-    <div id="state"></div>
-    <div id="cityPop"></div>
-    <div id="metroPop"></div>
-    <div id="cityDens"></div>
-    <div id="west"></div>
-    <div id="percentWhite"></div>
-    <div id="gender"></div>
-  </section>
-  <section id="weather">
-    <div class="sectionHead">
-      <span class="expand">+</span>
-      <label class="metricHead">Weather</label>
-    </div>
-    <div id="sunshine"></div>
-    <div id="precip"></div>
-  </section>
-  <section id="municipal">
-    <div class="sectionHead">
-      <span class="expand">+</span>
-      <label class="metricHead">Municipal</label>
-    </div>
-    <div id="jobMarket"></div>
-    <div id="safety"></div>
-    <div id="lifeQuality"></div>
-    <div id="schools"></div>
-    <div id="universities"></div>
-    <div id="cityFiscal"></div>
-    <div id="stateFiscal"></div>
-    <div id="citySolar"></div>
-    <div id="stateSolar"></div>
-  </section>
-  <section id="transit">
-    <div class="sectionHead">
-      <span class="expand">+</span>
-      <label class="metricHead">Transit</label>
-    </div>
-    <div id="bikeScore"></div>
-    <div id="bikeCommuters"></div>
-    <div id="walkScore"></div>
-    <div id="transitScore"></div>
-    <div id="mobility"></div>
-  </section>
-  <section id="amenities">
-    <div class="sectionHead">
-      <span class="expand">+</span>
-      <label class="metricHead">Amenities</label>
-    </div>
-    <div id="folf"></div>
-    <div id="gyms"></div>
-    <div id="sportRoutes"></div>
-    <div id="distToBeach"></div>
-    <div id="chickens"></div>
-  </section>
-  <script src="script.js"></script>
+  <!-- Basic structure of sections and metrics. Child elements are populated in script.js -->
+  <div id="metricContainer">
+    <section id="profile">
+      <div class="sectionHead">
+        <span class="expand">+</span>
+        <label class="metricHead">Profile</label>
+      </div>
+      <div id="city"></div>
+      <div id="state"></div>
+      <div id="cityPop"></div>
+      <div id="metroPop"></div>
+      <div id="cityDens"></div>
+      <div id="west"></div>
+      <div id="percentWhite"></div>
+      <div id="gender"></div>
+    </section>
+    <section id="weather">
+      <div class="sectionHead">
+        <span class="expand">+</span>
+        <label class="metricHead">Weather</label>
+      </div>
+      <div id="sunshine"></div>
+      <div id="precip"></div>
+    </section>
+    <section id="municipal">
+      <div class="sectionHead">
+        <span class="expand">+</span>
+        <label class="metricHead">Municipal</label>
+      </div>
+      <div id="jobMarket"></div>
+      <div id="safety"></div>
+      <div id="lifeQuality"></div>
+      <div id="schools"></div>
+      <div id="universities"></div>
+      <div id="cityFiscal"></div>
+      <div id="stateFiscal"></div>
+      <div id="citySolar"></div>
+      <div id="stateSolar"></div>
+    </section>
+    <section id="transit">
+      <div class="sectionHead">
+        <span class="expand">+</span>
+        <label class="metricHead">Transit</label>
+      </div>
+      <div id="bikeScore"></div>
+      <div id="bikeCommuters"></div>
+      <div id="walkScore"></div>
+      <div id="transitScore"></div>
+      <div id="mobility"></div>
+    </section>
+    <section id="amenities">
+      <div class="sectionHead">
+        <span class="expand">+</span>
+        <label class="metricHead">Amenities</label>
+      </div>
+      <div id="folf"></div>
+      <div id="gyms"></div>
+      <div id="sportRoutes"></div>
+      <div id="distToBeach"></div>
+      <div id="chickens"></div>
+    </section>
+  </div>
+
+  <script src="js\sections.js"></script>
+  <script src="js\data.js"></script>
+  <script src="js\script.js"></script>
 </body>
 </html>
