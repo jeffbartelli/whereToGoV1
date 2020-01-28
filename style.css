@@ -132,9 +132,12 @@ input[type=number]{
   margin-right: 3px;
 }
 
+.scoreLabel {
+  float: right;
+}
+
 .rank {
   float: right;
-  
 }
 
 /* The switch - the box around the slider */
