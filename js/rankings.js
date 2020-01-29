@@ -38,23 +38,3 @@ export {data} from './data.js';
 //   }
 // });
 // console.log(count);
-
-// TOP 10 LIST PER METRIC
-
-// for(let j=0; j<Data.metricDetails.length;j++){
-//   let rankArray = [];
-//   for(let i=0; i<Data.data.length;i++){
-//     let newArray2 = [];
-//     newArray2.push(Data.data[i][Data.metricDetails[j]['id']][1]);
-//     newArray2.push(Data.data[i].city[0]);
-//     newArray2.push(Data.data[i].state[0]);
-//     rankArray.push(newArray2);
-
-//   };
-//   rankArray.sort((a,b)=>{
-//     return a[0] - b[0];
-//   })
-//   rankArray = rankArray.slice(0,10);
-//   console.log(rankArray);
-//   rankArray = [];
-// }

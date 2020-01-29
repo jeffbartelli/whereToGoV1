@@ -81,6 +81,39 @@ header {
   cursor: pointer;
 }
 
+#profileTop {
+  /* position: relative; */
+  background-color: lightgreen;
+}
+
+#city {
+  position: relative;
+  display: inline-block;
+  float: left;
+  width: 50%;
+}
+
+#state {
+  position: relative;
+  display: inline-block;
+  float: right;
+  width: 50%;
+}
+
+#cityPop {
+  position: relative;
+  display: inline-block;
+  float: left;
+  width: 33%;
+}
+
+#metroPop {
+  position: relative;
+  display: inline-block;
+  float: right;
+  width: 33%;
+}
+
 /* All the contents of the metric top container */
 .top {
   background-color: mistyrose;
@@ -110,6 +143,10 @@ header {
   cursor: pointer;
   position: relative;
   display: inline-block;
+}
+.popUpTitle {
+  text-align: center;
+  background-color: skyblue;
 }
 
 input[type=number]{

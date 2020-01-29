@@ -1422,4 +1422,9 @@ let metricDetails = [
 ]
 const rankOrder = [null,null,0,0,0,1,0,1,0,0,0,1,1,0,0,0,0,1,1,0,1,1,1,1,0,1,1,1,1,1];
 
-export { data, metricDetails, rankOrder };
+const cityList = [];
+for(let i=0;i<data.length;i++){
+  cityList.push(data[i]['city'][0] + ', ' + data[i]['state'][0]);
+};
+
+export { data, metricDetails, rankOrder, cityList };

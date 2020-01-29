@@ -1,4 +1,4 @@
-import {metricDetails} from './data.js';
+import {metricDetails, cityList} from './data.js';
 import {data} from './rankings.js';
 
 // TOP30 LIST
@@ -82,6 +82,10 @@ top10.innerHTML = '?';
 bottom.appendChild(top10);
 const top10List = document.createElement('ul');
 top10List.setAttribute('class','top10List');
+const popUpTitle = document.createElement('li');
+popUpTitle.innerHTML = 'Top 10';
+popUpTitle.setAttribute('class','popUpTitle');
+top10List.appendChild(popUpTitle);
 for(let i=0;i<10;i++){
   let x =document.createElement('li');
   x.setAttribute('class','top10Item'+(i+1));
@@ -111,6 +115,11 @@ let sectionPopulator = () => {
   let sectionList = Array.from(document.getElementById('metricContainer').children);
   for (let j=0;j<sectionList.length;j++){
     let metricItem = Array.from(document.getElementById(sectionList[j]['id']).children);
+    if(sectionList[j]['id'] == 'profile'){
+      for(let i=1;i<6;i++){
+        metricItem[i].innerHTML = 'test';
+      }
+    }
     let i;
     sectionList[j]['id'] == 'profile' ? i=6 : i=1;
     for (i; i<metricItem.length; i++) {
@@ -125,7 +134,6 @@ let sectionPopulator = () => {
       metricItem[i].querySelector('.description').innerHTML = newArray[0]['description'];
       metricItem[i].querySelector('.source > a').setAttribute('href',newArray[0]['source']);
       metricItem[i].querySelector('.scoreLabel').innerHTML = newArray[0]['scoreLabel'];
-      // metricItem[i].querySelector('.top10').setAttribute('title',newArray[0]['metricName'] + " Top 10");
       let rankArray = [];
       for(let n=0; n<data.length;n++){
         let newArray2 = [];
@@ -144,5 +152,13 @@ let sectionPopulator = () => {
       rankArray = [];
     };
   };
+  const profileTop = document.createElement('div');
+  profileTop.setAttribute('id','profileTop');
+  document.getElementById('profile').insertBefore(profileTop, document.getElementById('profile').childNodes[2]);
+  profileTop.appendChild(document.querySelector('#city'));
+  profileTop.appendChild(document.querySelector('#state'));
+  profileTop.appendChild(document.querySelector('#cityPop'));
+  profileTop.appendChild(document.querySelector('#metroPop'));
+  profileTop.appendChild(document.querySelector('#popDensity'));
 }
 sectionPopulator();
