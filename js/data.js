@@ -1104,7 +1104,7 @@ let metricDetails = [
     section:"weather",
     id:"precip",
     metricName:"Days of Precipitation",
-    description:"Average number of days that a city received significant precipitation.",
+    description:"Average number of days that a city received significant precipitation. Cities are ranked by lowest number of days of precipitation.",
     source:"https://nl.batchgeo.com/map/us-cities-rainy-days-per-year",
     score:null,
     scoreLabel:"Day Per Year: ",
@@ -1124,7 +1124,7 @@ let metricDetails = [
   },
   {
     section:"transit",
-    id:"bikeCommuters",
+    id:"percentBikeCommuters",
     metricName:"Percent of Bike Commuters",
     description:"The percentage of people who reported bike commuting for each city as of the 2010 Census.",
     source:"https://www.census.gov/library/publications/2014/acs/acs-25.html",
@@ -1157,7 +1157,7 @@ let metricDetails = [
   },
   {
     section:"transit",
-    id:"mobility",
+    id:"allTransit",
     metricName:"AllTransit Rankings",
     description:"This is the AllTransit Performance Score, which aggregates route and performance data for the vast majority of transit systems within the US. This data is parsed to provide area-specific ratings from the neighborhood to regional level.",
     source:"https://alltransit.cnt.org/rankings/",
@@ -1168,7 +1168,7 @@ let metricDetails = [
   },
   {
     section:"amenities",
-    id:"folf",
+    id:"folfCourses",
     metricName:"Disc Golf Courses",
     description:"Number of disc golf courses within a metropolitan area.",
     source:"https://www.dgcoursereview.com/",
@@ -1179,7 +1179,7 @@ let metricDetails = [
   },
   {
     section:"amenities",
-    id:"gyms",
+    id:"climbingGyms",
     metricName:"Climbing Gyms",
     description:"The number of climbing gyms within city limits.",
     source:"http://www.climbingbusinessjournal.com/directory/map/",
@@ -1201,7 +1201,7 @@ let metricDetails = [
   },
   {
     section:"amenities",
-    id:"distToBeach",
+    id:"distBeach",
     metricName:"Distance to the Nearest Beach",
     description:"Based on a google maps direction search for each city to the closest ocean beach.",
     source:null,
@@ -1223,7 +1223,7 @@ let metricDetails = [
   },
   {
     section:"municipal",
-    id:"jobMarket",
+    id:"bestJobMarket",
     metricName:"Job Market",
     description:"Looks at job openings, job market growth, salaries, unemployment/underemployment, retirement resources, commute time, median income, job satisfaction, and more.",
     source:"https://wallethub.com/edu/best-cities-for-jobs/2173/",
@@ -1234,7 +1234,7 @@ let metricDetails = [
   },
   {
     section:"municipal",
-    id:"safety",
+    id:"safestCities",
     metricName:"City-Wide Safety",
     description:"A variable that aggregates 35 relevant metrics centered on three dimensions Home & Community Safety, Financial Safety, and Natural Distaster Risk.",
     source:"https://wallethub.com/edu/safest-cities-in-america/41926/",
@@ -1245,7 +1245,7 @@ let metricDetails = [
   },
   {
     section:"municipal",
-    id:"lifeQuality",
+    id:"bestCityToLive",
     metricName:"Quality of Life",
     description:"A diverse variable that includes metrics on higher education attainment, cost of living, schools, crime, outdoor activities, nightlife, health and fitness, and several others.",
     source:"https://www.niche.com/places-to-live/search/best-cities/",
@@ -1256,7 +1256,7 @@ let metricDetails = [
   },
   {
     section:"municipal",
-    id:"schools",
+    id:"publicSchoolRank",
     metricName:"Public Schools",
     description:"Uses U.S. Census data to analyze public school performancy weighted by size of student body. Serves as an analog for community quality and investment.",
     source:"https://www.niche.com/places-to-live/search/cities-with-the-best-public-schools/",
@@ -1267,7 +1267,7 @@ let metricDetails = [
   },
   {
     section:"municipal",
-    id:"universities",
+    id:"universityCount",
     metricName:"Number of Universities",
     description:"An approximate count of accredited universities in a city.",
     source:"http://www.univsearch.com/state.php",
@@ -1278,7 +1278,7 @@ let metricDetails = [
   },
   {
     section:"municipal",
-    id:"cityFiscal",
+    id:"cityFiscalHealth",
     metricName:"City Fiscal Health",
     description:"An index of several metrics, including: 1) General Fund balance over Expenditures; 2) Ratio of long term obligations over Government Revenue; 3) Ratio of Pension contributions over Government Revenue; 4) Unemployment; 5) Property Values.",
     source:"http://www.thefiscaltimes.com/2017/01/09/How-Strong-Are-Your-Citys-Finances-116-US-Cities-Ranked",
@@ -1289,7 +1289,7 @@ let metricDetails = [
   },
   {
     section:"municipal",
-    id:"stateFiscal",
+    id:"stateFiscalHealth",
     metricName:"State Fiscal Health",
     description:"Fiscal health is based on short- and long-term debt, unfunded pensions, and healthcare benefits.",
     source:"https://www.mercatus.org/statefiscalrankings",
@@ -1300,7 +1300,7 @@ let metricDetails = [
   },
   {
     section:"municipal",
-    id:"citySolar",
+    id:"citySolarLaws",
     metricName:"City Solar Laws",
     description:"A review of installed capacity and solar laws for a collection of 64 U.S. cities.",
     source:"https://environmentamerica.org/sites/environment/files/reports/EA_shiningcities2016_scrn.pdf",
@@ -1311,7 +1311,7 @@ let metricDetails = [
   },
   {
     section:"municipal",
-    id:"stateSolar",
+    id:"stateSolarLaws",
     metricName:"State Solar Laws",
     description:"A study based on the renewable portfolio standard, electricity cost, net metering, solar tax credit, solar rebates, and tax exemptions.",
     source:"https://solarpowerrocks.com/2017-state-solar-power-rankings/",
@@ -1344,7 +1344,7 @@ let metricDetails = [
   },
   {
     section:"profile",
-    id:"west",
+    id:"westOrRest",
     metricName:"Western City?",
     description:"Is this city in the west?",
     source:null,
@@ -1377,7 +1377,7 @@ let metricDetails = [
   },
   {
     section:"profile",
-    id:"popDens",
+    id:"popDensity",
     metricName:"Population Density",
     description:"Population density per square mile.",
     source:"http://www.governing.com/gov-data/population-density-land-area-cities-map.html",
@@ -1399,7 +1399,7 @@ let metricDetails = [
   },
   {
     section:"profile",
-    id:"gender",
+    id:"femaleRatio",
     metricName:"Female Population",
     description:"What is the population difference between women and men?",
     source:"http://www.bestplaces.net/docs/studies/solocities_gap1.aspx",

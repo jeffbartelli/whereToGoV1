@@ -1,4 +1,5 @@
 import {metricDetails} from './data.js';
+import {data} from './rankings.js';
 
 // TOP30 LIST
 let cityRankings = () => {
@@ -79,6 +80,15 @@ const top10 = document.createElement('span');
 top10.setAttribute('class','top10');
 top10.innerHTML = '?';
 bottom.appendChild(top10);
+const top10List = document.createElement('ul');
+top10List.setAttribute('class','top10List');
+for(let i=0;i<10;i++){
+  let x =document.createElement('li');
+  x.setAttribute('class','top10Item'+(i+1));
+  x.innerHTML = 'text';
+  top10List.appendChild(x);
+};
+top10.appendChild(top10List);
 const rank = document.createElement('label');
 rank.setAttribute('class','rank');
 rank.innerHTML = 'Rank: '
@@ -115,7 +125,23 @@ let sectionPopulator = () => {
       metricItem[i].querySelector('.description').innerHTML = newArray[0]['description'];
       metricItem[i].querySelector('.source > a').setAttribute('href',newArray[0]['source']);
       metricItem[i].querySelector('.scoreLabel').innerHTML = newArray[0]['scoreLabel'];
-      metricItem[i].querySelector('.top10').setAttribute('title',newArray[0]['metricName'] + " Top 10");
+      // metricItem[i].querySelector('.top10').setAttribute('title',newArray[0]['metricName'] + " Top 10");
+      let rankArray = [];
+      for(let n=0; n<data.length;n++){
+        let newArray2 = [];
+        newArray2.push(data[n][metricItem[i]['id']][1]);
+        newArray2.push(data[n].city[0]);
+        newArray2.push(data[n].state[0]);
+        rankArray.push(newArray2);
+      };
+      rankArray.sort((a,b)=>{
+        return a[0] - b[0];
+      });
+      rankArray = rankArray.slice(0,10);
+      for(let m=0;m<10; m++){
+        metricItem[i].querySelector('.top10Item'+(m+1)).innerHTML = rankArray[m][0] + ". " + rankArray[m][1] + ", " + rankArray[m][2];
+      };
+      rankArray = [];
     };
   };
 }
