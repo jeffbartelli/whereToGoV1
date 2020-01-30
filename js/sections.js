@@ -20,13 +20,9 @@ cityRankings();
 // INDIVIDUAL METRIC NODE FOR CLONING
 let metric = document.createElement('div');
 metric.setAttribute('class','metric');
-let metricForm = document.createElement('form');
-metricForm.setAttribute('action','');
-metricForm.setAttribute('class','metricForm');
-metric.appendChild(metricForm);
 const top1 = document.createElement('div');
 top1.setAttribute('class','top');
-metricForm.appendChild(top1);
+metric.appendChild(top1);
 const expand = document.createElement('span');
 expand.setAttribute('class','expand');
 expand.innerHTML = '+';
@@ -41,7 +37,7 @@ top1.appendChild(switcher);
 const checkbox = document.createElement('input');
 checkbox.setAttribute('type','checkbox');
 checkbox.setAttribute('class','checker');
-checkbox.setAttribute('onchange','#');// update this to point to a function that adjusts this value in dataSources.
+checkbox.setAttribute('onchange','toggleFunction(this)');
 checkbox.setAttribute('value','1');
 checkbox.checked = true;
 switcher.appendChild(checkbox);
@@ -50,24 +46,24 @@ slider.setAttribute('class','slider round');
 switcher.appendChild(slider);
 const number = document.createElement('input');
 number.setAttribute('type','number');
-number.setAttribute('value','0');
+number.setAttribute('value','');
 number.setAttribute('max','100');
 number.setAttribute('min','0');
 number.setAttribute('maxlength','3');
-number.setAttribute('onchange','');//update this to point to the appropriate function
+number.setAttribute('onchange','weightFunction(this)');
 number.setAttribute('class','weight');
 number.setAttribute('required','');
 top1.appendChild(number);
 const mid = document.createElement('div');
 mid.setAttribute('class','mid');
-metricForm.appendChild(mid);
+metric.appendChild(mid);
 const description = document.createElement('label')
 description.setAttribute('class','description');
 description.innerHTML = 'Description: []';
 mid.appendChild(description);
 const bottom = document.createElement('div');
 bottom.setAttribute('class','bottom');
-metricForm.appendChild(bottom);
+metric.appendChild(bottom);
 const source = document.createElement('label');
 source.setAttribute('class','source');
 bottom.appendChild(source);
@@ -160,5 +156,34 @@ let sectionPopulator = () => {
   profileTop.appendChild(document.querySelector('#cityPop'));
   profileTop.appendChild(document.querySelector('#metroPop'));
   profileTop.appendChild(document.querySelector('#popDensity'));
+  let switches = document.querySelectorAll('.checker');
+let weights = document.querySelectorAll('.weight');
+for (let i=0; i<switches.length; i++){
+  switches[i].setAttribute('id',document.querySelectorAll('.checker')[i].parentNode.parentNode.parentNode.parentNode.id + (i+1));
+  weights[i].setAttribute('id',document.querySelectorAll('.checker')[i].parentNode.parentNode.parentNode.parentNode.id + (i+1));
+}
 }
 sectionPopulator();
+
+
+// FUNCTIONS FOR TOGGLES AND WEIGHTS
+window.toggleFunction = function(e) {
+  if(e.checked === true) {
+    metricDetails.filter((f)=>{
+      return f.section == e.parentNode.parentNode.parentNode.parentNode.parentNode.id &&
+      f.id == e.parentNode.parentNode.parentNode.parentNode.id;
+    })[0]['active'] = 1;
+  } else {
+    metricDetails.filter((f)=>{
+      return f.section == e.parentNode.parentNode.parentNode.parentNode.parentNode.id &&
+      f.id == e.parentNode.parentNode.parentNode.parentNode.id;
+    })[0]['active'] = 0;
+  };
+};
+
+window.weightFunction = function(e) {
+  metricDetails.filter((f)=>{
+    return f.section == e.parentNode.parentNode.parentNode.parentNode.id &&
+    f.id == e.parentNode.parentNode.parentNode.id;
+  })[0]['weight'] = parseInt(e.value,10);
+};
