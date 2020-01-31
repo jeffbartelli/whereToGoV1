@@ -23,6 +23,13 @@ header {
   margin: 1px;
 }
 
+#header {
+  position: sticky;
+  top:0px;
+  background-color: white;
+  z-index: 1;
+}
+
 .sectionHead {
   background-color: #C9EDFF;
   border-top-left-radius: 3px;
@@ -35,6 +42,18 @@ header {
 #intro {
   background-color: mediumaquamarine;
 }
+
+#topCities {
+  position: sticky;
+  top: 22px;
+  z-index: 1;
+}
+
+/* #city {
+  position: sticky;
+  top: 200px;
+  z-index: 1;
+} */
 
 #rankings {
   display: inline-block;
