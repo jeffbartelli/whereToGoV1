@@ -1,5 +1,5 @@
 import {metricDetails, cityList} from './data.js';
-import {data} from './rankings.js';
+import {data, weightUpdate} from './rankings.js';
 
 // TOP30 LIST
 let cityRankings = () => {
@@ -186,4 +186,5 @@ window.weightFunction = function(e) {
     return f.section == e.parentNode.parentNode.parentNode.parentNode.id &&
     f.id == e.parentNode.parentNode.parentNode.id;
   })[0]['weight'] = parseInt(e.value,10);
+  weightUpdate(e);
 };
