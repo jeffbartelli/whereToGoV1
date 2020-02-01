@@ -75,5 +75,34 @@ function weightUpdate(e) {
   }
 }
 
+let overallSccore = () => {
+  for(let j=0;j<Data.data.length;j++){
+    let tempAvg = 0;
+    for(let i=5;i<dataKeys.length;i++){
+      tempAvg += Data.data[j][dataKeys[i]][2];
+    }
+    tempAvg /= dataKeys.length;
+    Data.data[j][dataKeys[0]].push(tempAvg);
+  }
+}
+overallSccore();
+
+// STILL NEEDS TO CHECK IF A METRIC IS TURNED ON
+let overallRank = () => {
+  for(let j=0;j<Data.data.length;j++){
+    let tempRank = [];
+    let sorted = [];
+    let ranks = [];
+    for(let i=0;i<Data.data.length;i++){
+      tempRank.push(Data.data[i]['city'][1]);
+    }
+    sorted = tempRank.slice().sort((a,b)=>{return b-a});
+    ranks = tempRank.slice().map((v)=>{return sorted.indexOf(v)+1}); 
+    Data.data[j]['city'].push(ranks[j]);
+  }
+}
+overallRank();
+console.log(Data.data[9]);
+
 export {data} from './data.js';
 export {weightUpdate, weightedCalc};
