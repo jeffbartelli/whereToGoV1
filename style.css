@@ -47,6 +47,7 @@ header {
   position: sticky;
   top: 22px;
   z-index: 1;
+  background-color: white;
 }
 
 /* #city {

@@ -1099,7 +1099,7 @@ let metricDetails = [
     score:null,
     scoreLabel:"Days Per Year: ",
     weight:100,
-    active:1
+    active:1,
   },
   {
     section:"weather",
@@ -1368,7 +1368,7 @@ let metricDetails = [
   {
     section:"profile",
     id:"metroPop",
-    metricName:"Metropolitan Population",
+    metricName:"Metro Population",
     description:null,
     source:"https://en.wikipedia.org/wiki/List_of_metropolitan_statistical_areas",
     score:null,
@@ -1379,7 +1379,7 @@ let metricDetails = [
   {
     section:"profile",
     id:"popDensity",
-    metricName:"Population Density",
+    metricName:"City Density",
     description:"Population density per square mile.",
     source:"http://www.governing.com/gov-data/population-density-land-area-cities-map.html",
     score:null,
@@ -1421,7 +1421,7 @@ let metricDetails = [
   //   active:1
   // },
 ]
-const rankOrder = [null,null,0,0,0,1,0,1,0,0,0,1,1,0,0,0,0,1,1,0,1,1,1,1,0,1,1,1,1,1];
+const rankOrder = [null,null,0,0,0,1,0,1,0,0,0,1,1,0,0,0,0,1,0,1,1,1,1,0,1,1,1,1,1,0];
 
 const cityList = [];
 for(let i=0;i<data.length;i++){

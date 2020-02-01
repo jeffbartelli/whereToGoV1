@@ -1,5 +1,5 @@
 import {metricDetails, cityList} from './data.js';
-import {data, weightUpdate} from './rankings.js';
+import {data, weightUpdate, weightedCalc} from './rankings.js';
 
 // TOP30 LIST
 let cityRankings = () => {
@@ -113,7 +113,9 @@ let sectionPopulator = () => {
     let metricItem = Array.from(document.getElementById(sectionList[j]['id']).children);
     if(sectionList[j]['id'] == 'profile'){
       for(let i=1;i<6;i++){
-        metricItem[i].innerHTML = 'test';
+        metricItem[i].innerHTML = metricDetails.filter((el)=>{
+          return el.id == metricItem[i]['id'];
+        })[0]['metricName'] + ': ';
       }
     }
     let i;
@@ -187,4 +189,6 @@ window.weightFunction = function(e) {
     f.id == e.parentNode.parentNode.parentNode.id;
   })[0]['weight'] = parseInt(e.value,10);
   weightUpdate(e);
+  weightedCalc();
+  console.log(data[31]);
 };

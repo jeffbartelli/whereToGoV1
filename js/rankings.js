@@ -28,30 +28,27 @@ for(let j=0;j<dataKeys.length;j++){
   } 
 }
 
-// function weightedCalc() {
-//   for(let j=0; j<Data.data.length; j++){
-//     for(let i=4; i<dataKeys.length;i++){
-//       let count = 0;
-//       Data.data.forEach((item,k)=>{
-//         if(Data.data[k][dataKeys[i]][0] !== null){count++};
-//       });
-//       let rank = Data.data[j][dataKeys[i]][1];
-//       let weight = Data.metricDetails.filter((f)=>{
-//         return f.id == Object.keys(Data.data[j])[i];
-//       })[0];
-//       console.log(weight);
-//       // Data.data[j][dataKeys[i]][2] = (100 - count + rank) * weight;
-//       // console.log(Data.data[j][dataKeys[i]][2]);
-//       // console.log(count);
-//     }
-//   }
-// }
-// weightedCalc();
-
+function weightedCalc() {
+  for(let j=0; j<Data.data.length; j++){
+    for(let i=4; i<dataKeys.length-1;i++){
+      let count = 0;
+      Data.data.forEach((item,k)=>{
+        if(Data.data[k][dataKeys[i]][0] !== null){count++};
+      });
+      let rank = (count+1)-(Data.data[j][dataKeys[i]][1]);
+      let weight = (Data.metricDetails.filter((f)=>{
+        return f.id == Object.keys(Data.data[j])[i];
+      })[0].weight)/100;
+      Data.data[j][dataKeys[i]][2] = (100 - count + rank) * weight;
+    }
+    Data.data[j]['metroClass'][2] = (100 - 34 + Data.data[j]['metroClass'][1]);
+  }
+}
+weightedCalc();
 
 // EXECUTE TO PRODUCE THE WEIGHT ADJUSTED SCORE FOR A METRIC ACROSS ALL CITIES
 function weightUpdate(e) {
-  let el = [e.id.substring(0,e.id.length-1)][0];
+  let el = [e.id.replace(/\d+$/,'')][0];
   let count = 0;
   Data.data.forEach((item,i)=>{
     if(Data.data[i][el][0] !== null){count++};
@@ -79,4 +76,4 @@ function weightUpdate(e) {
 }
 
 export {data} from './data.js';
-export {weightUpdate};
+export {weightUpdate, weightedCalc};
