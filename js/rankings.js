@@ -1,11 +1,11 @@
 import * as Data from './data.js';
+import {metricDetails, topRanks} from './sections.js';
 
 // SCRIPT FOR SORTING AND RANKING EACH METRIC ACROSS ALL THE CITIES AND ADDING THE RANK TO EACH CITY'S KEYS.
 const dataKeys = Object.keys(Data.data[0]);
 let temp = [];
 let testSort = [];
 let ranks = [];
-
 for(let j=0;j<dataKeys.length;j++){
   if(!isNaN(Data.data[0][dataKeys[j]])){
     Data.data.forEach((item,i)=>{
@@ -73,21 +73,29 @@ function weightUpdate(e) {
     testSort = [];
     ranks = [];
   }
+  overallSccore();
+  overallRank();
 }
 
 let overallSccore = () => {
   for(let j=0;j<Data.data.length;j++){
     let tempAvg = 0;
-    for(let i=5;i<dataKeys.length;i++){
-      tempAvg += Data.data[j][dataKeys[i]][2];
+    let avgCount = 0;
+    for(let i=5;i<metricDetails.length;i++){
+      let isActive = metricDetails.filter((f)=>{
+        return f.id == Object.keys(Data.data[j])[i];
+      })[0]['active'];
+      if (isActive == 1){
+        tempAvg += Data.data[j][dataKeys[i]][2];
+        avgCount++;
+      }
     }
-    tempAvg /= dataKeys.length;
+    tempAvg /= avgCount;
     Data.data[j][dataKeys[0]].push(tempAvg);
   }
 }
 overallSccore();
 
-// STILL NEEDS TO CHECK IF A METRIC IS TURNED ON
 let overallRank = () => {
   for(let j=0;j<Data.data.length;j++){
     let tempRank = [];
@@ -102,7 +110,6 @@ let overallRank = () => {
   }
 }
 overallRank();
-console.log(Data.data[9]);
 
 export {data} from './data.js';
-export {weightUpdate, weightedCalc};
+export {weightUpdate, weightedCalc, overallSccore, dataKeys};

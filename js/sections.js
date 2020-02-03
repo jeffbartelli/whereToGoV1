@@ -1,5 +1,5 @@
 import {metricDetails, cityList} from './data.js';
-import {data, weightUpdate, weightedCalc} from './rankings.js';
+import {data, weightUpdate, weightedCalc, overallSccore, dataKeys} from './rankings.js';
 
 // TOP30 LIST
 let cityRankings = () => {
@@ -9,7 +9,7 @@ let cityRankings = () => {
     rankSet.setAttribute('id',"rank"+j*10);
     document.getElementById('rankings').appendChild(rankSet.cloneNode(true));
     for (let i=1; i<11; i++) {
-      rankItem.setAttribute('id',(j*10-10) + i);
+      rankItem.setAttribute('id',((j*10-10) + i));
       rankItem.innerHTML = (j*10-10) + i + '. ';
       document.getElementById("rank"+j*10).appendChild(rankItem.cloneNode(true));
     }
@@ -181,6 +181,8 @@ window.toggleFunction = function(e) {
       f.id == e.parentNode.parentNode.parentNode.parentNode.id;
     })[0]['active'] = 0;
   };
+  overallSccore();
+  overallRank();
 };
 
 window.weightFunction = function(e) {
@@ -190,5 +192,29 @@ window.weightFunction = function(e) {
   })[0]['weight'] = parseInt(e.value,10);
   weightUpdate(e);
   weightedCalc();
-  console.log(data[31]);
 };
+
+let topRanks = () => {
+  let rankFill = [];
+  let finalRank = [];
+  for(let i=0;i<data.length;i++){
+    rankFill.push(data[i][dataKeys[0]][0]);
+    rankFill.push(data[i][dataKeys[1]][0]);
+    rankFill.push(data[i][dataKeys[0]][2]);
+    finalRank.push(rankFill);
+    rankFill = [];
+  }
+  finalRank.sort((a,b)=>{
+    if ( a[2] == b[2]) return 0;
+    return a[2] < b[2] ? -1 : 1;
+  });
+  for(let i=0;i<30;i++){
+    document.getElementById(i+1).innerHTML = (i+1) + ". " + finalRank[i][0] + ", " + finalRank[i][1];
+    console.log(document.getElementById(i));
+  }
+}
+topRanks();
+
+
+export {metricDetails} from './data.js';
+export {topRanks};

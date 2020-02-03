@@ -9,7 +9,7 @@ const data = [
     folfCourses:[6],
     distBeach:[658],
     sportRoutes:[134],
-    climbingGyms:[5],
+    climbingGyms:[3],
     sunshine:[0.76],
     precip:[60],
     westOrRest:[1],
@@ -1428,4 +1428,4 @@ for(let i=0;i<data.length;i++){
   cityList.push(data[i]['city'][0] + ', ' + data[i]['state'][0]);
 };
 
-export { data, metricDetails, rankOrder, cityList };
+export {data, metricDetails, rankOrder, cityList};
