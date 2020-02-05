@@ -1,5 +1,5 @@
 import {metricDetails, cityList} from './data.js';
-import {data, weightUpdate, weightedCalc, overallSccore, dataKeys} from './rankings.js';
+import {data, weightUpdate, weightedCalc, overallScore, overallRank, dataKeys} from './rankings.js';
 
 // TOP30 LIST
 let cityRankings = () => {
@@ -15,94 +15,96 @@ let cityRankings = () => {
     }
   }
 }
-cityRankings();
 
+let metric;
 // INDIVIDUAL METRIC NODE FOR CLONING
-let metric = document.createElement('div');
-metric.setAttribute('class','metric');
-const top1 = document.createElement('div');
-top1.setAttribute('class','top');
-metric.appendChild(top1);
-const expand = document.createElement('span');
-expand.setAttribute('class','expand');
-expand.innerHTML = '+';
-top1.appendChild(expand);
-const name = document.createElement('label');
-name.setAttribute('class','name');
-name.innerHTML = '[Metric Name]';
-top1.appendChild(name);
-const switcher = document.createElement('label');
-switcher.setAttribute('class','switch');
-top1.appendChild(switcher);
-const checkbox = document.createElement('input');
-checkbox.setAttribute('type','checkbox');
-checkbox.setAttribute('class','checker');
-checkbox.setAttribute('onchange','toggleFunction(this)');
-checkbox.setAttribute('value','1');
-checkbox.checked = true;
-switcher.appendChild(checkbox);
-const slider = document.createElement('span');
-slider.setAttribute('class','slider round');
-switcher.appendChild(slider);
-const number = document.createElement('input');
-number.setAttribute('type','number');
-number.setAttribute('value','');
-number.setAttribute('max','100');
-number.setAttribute('min','0');
-number.setAttribute('maxlength','3');
-number.setAttribute('onchange','weightFunction(this)');
-number.setAttribute('class','weight');
-number.setAttribute('required','');
-top1.appendChild(number);
-const mid = document.createElement('div');
-mid.setAttribute('class','mid');
-metric.appendChild(mid);
-const description = document.createElement('label')
-description.setAttribute('class','description');
-description.innerHTML = 'Description: []';
-mid.appendChild(description);
-const bottom = document.createElement('div');
-bottom.setAttribute('class','bottom');
-metric.appendChild(bottom);
-const source = document.createElement('label');
-source.setAttribute('class','source');
-bottom.appendChild(source);
-let sourceLink = document.createElement('a');
-sourceLink.setAttribute('href','#');
-sourceLink.setAttribute('target','_blank');
-sourceLink.innerHTML = 'Source';
-source.appendChild(sourceLink);
-const top10 = document.createElement('span');
-top10.setAttribute('class','top10');
-top10.innerHTML = '?';
-bottom.appendChild(top10);
-const top10List = document.createElement('ul');
-top10List.setAttribute('class','top10List');
-const popUpTitle = document.createElement('li');
-popUpTitle.innerHTML = 'Top 10';
-popUpTitle.setAttribute('class','popUpTitle');
-top10List.appendChild(popUpTitle);
-for(let i=0;i<10;i++){
-  let x =document.createElement('li');
-  x.setAttribute('class','top10Item'+(i+1));
-  x.innerHTML = 'text';
-  top10List.appendChild(x);
-};
-top10.appendChild(top10List);
-const rank = document.createElement('label');
-rank.setAttribute('class','rank');
-rank.innerHTML = 'Rank: '
-bottom.appendChild(rank);
-const rankVal = document.createElement('span');
-rankVal.innerHTML = '[]';
-rank.appendChild(rankVal);
-const score = document.createElement('label');
-score.setAttribute('class','score');
-score.innerHTML = '[score]';
-bottom.appendChild(score);
-const scoreLabel = document.createElement('div');
-scoreLabel.setAttribute('class','scoreLabel');
-bottom.appendChild(scoreLabel);
+let sectionNode = () => {
+  metric = document.createElement('div');
+  metric.setAttribute('class','metric');
+  const top1 = document.createElement('div');
+  top1.setAttribute('class','top');
+  metric.appendChild(top1);
+  const expand = document.createElement('span');
+  expand.setAttribute('class','expand');
+  expand.innerHTML = '+';
+  top1.appendChild(expand);
+  const name = document.createElement('label');
+  name.setAttribute('class','name');
+  name.innerHTML = '[Metric Name]';
+  top1.appendChild(name);
+  const switcher = document.createElement('label');
+  switcher.setAttribute('class','switch');
+  top1.appendChild(switcher);
+  const checkbox = document.createElement('input');
+  checkbox.setAttribute('type','checkbox');
+  checkbox.setAttribute('class','checker');
+  checkbox.setAttribute('onchange','toggleFunction(this)');
+  checkbox.setAttribute('value','1');
+  checkbox.checked = true;
+  switcher.appendChild(checkbox);
+  const slider = document.createElement('span');
+  slider.setAttribute('class','slider round');
+  switcher.appendChild(slider);
+  const number = document.createElement('input');
+  number.setAttribute('type','number');
+  number.setAttribute('value','');
+  number.setAttribute('max','100');
+  number.setAttribute('min','0');
+  number.setAttribute('maxlength','3');
+  number.setAttribute('onchange','weightFunction(this)');
+  number.setAttribute('class','weight');
+  number.setAttribute('required','');
+  top1.appendChild(number);
+  const mid = document.createElement('div');
+  mid.setAttribute('class','mid');
+  metric.appendChild(mid);
+  const description = document.createElement('label')
+  description.setAttribute('class','description');
+  description.innerHTML = 'Description: []';
+  mid.appendChild(description);
+  const bottom = document.createElement('div');
+  bottom.setAttribute('class','bottom');
+  metric.appendChild(bottom);
+  const source = document.createElement('label');
+  source.setAttribute('class','source');
+  bottom.appendChild(source);
+  let sourceLink = document.createElement('a');
+  sourceLink.setAttribute('href','#');
+  sourceLink.setAttribute('target','_blank');
+  sourceLink.innerHTML = 'Source';
+  source.appendChild(sourceLink);
+  const top10 = document.createElement('span');
+  top10.setAttribute('class','top10');
+  top10.innerHTML = '?';
+  bottom.appendChild(top10);
+  const top10List = document.createElement('ul');
+  top10List.setAttribute('class','top10List');
+  const popUpTitle = document.createElement('li');
+  popUpTitle.innerHTML = 'Top 10';
+  popUpTitle.setAttribute('class','popUpTitle');
+  top10List.appendChild(popUpTitle);
+  for(let i=0;i<10;i++){
+    let x =document.createElement('li');
+    x.setAttribute('class','top10Item'+(i+1));
+    x.innerHTML = 'text';
+    top10List.appendChild(x);
+  };
+  top10.appendChild(top10List);
+  const rank = document.createElement('label');
+  rank.setAttribute('class','rank');
+  rank.innerHTML = 'Rank: '
+  bottom.appendChild(rank);
+  const rankVal = document.createElement('span');
+  rankVal.innerHTML = '[]';
+  rank.appendChild(rankVal);
+  const score = document.createElement('label');
+  score.setAttribute('class','score');
+  score.innerHTML = '[score]';
+  bottom.appendChild(score);
+  const scoreLabel = document.createElement('div');
+  scoreLabel.setAttribute('class','scoreLabel');
+  bottom.appendChild(scoreLabel);
+}
 
 // INSERT CODE FOR TOP OF PROFILE SECTION HERE
 
@@ -136,6 +138,7 @@ let sectionPopulator = () => {
       for(let n=0; n<data.length;n++){
         let newArray2 = [];
         newArray2.push(data[n][metricItem[i]['id']][1]);
+        // newArray2.push(data[n][metricItem[i]['id']][0]);
         newArray2.push(data[n].city[0]);
         newArray2.push(data[n].state[0]);
         rankArray.push(newArray2);
@@ -158,17 +161,59 @@ let sectionPopulator = () => {
   profileTop.appendChild(document.querySelector('#cityPop'));
   profileTop.appendChild(document.querySelector('#metroPop'));
   profileTop.appendChild(document.querySelector('#popDensity'));
+  let dropdown = document.createElement('div');
+  dropdown.setAttribute('class','dropdown');
+  document.querySelector('#city').appendChild(dropdown);
+  let dropdownContent = document.createElement('select');
+  dropdownContent.setAttribute('id','cityDropdown');
+  dropdownContent.setAttribute('onchange','dropdownChange()');// Enter dropdown function here.
+  document.querySelector('.dropdown').appendChild(dropdownContent);
+  let dropdownPrompt = document.createElement('option');
+  dropdownPrompt.innerHTML = 'Select A City';
+  dropdownContent.appendChild(dropdownPrompt);
+  let dropdownItems = document.getElementById('cityDropdown');
+  for(let i =0;i<cityList.length;i++){
+    let cities = cityList[i];
+    var el = document.createElement('option');
+    el.textContent = cities;
+    el.value = cities;
+    dropdownItems.appendChild(el);
+  }
+
   let switches = document.querySelectorAll('.checker');
-let weights = document.querySelectorAll('.weight');
-for (let i=0; i<switches.length; i++){
-  switches[i].setAttribute('id',document.querySelectorAll('.checker')[i].parentNode.parentNode.parentNode.parentNode.id + (i+1));
-  weights[i].setAttribute('id',document.querySelectorAll('.checker')[i].parentNode.parentNode.parentNode.parentNode.id + (i+1));
+  let weights = document.querySelectorAll('.weight');
+  for (let i=0; i<switches.length; i++){
+    switches[i].setAttribute('id',document.querySelectorAll('.checker')[i].parentNode.parentNode.parentNode.parentNode.id + (i+1));
+    weights[i].setAttribute('id',document.querySelectorAll('.checker')[i].parentNode.parentNode.parentNode.parentNode.id + (i+1));
+  }
 }
+
+
+
+// var coll = document.getElementsByClassName('expand');
+
+// for (let i = 0; i < coll.length; i++) {
+//   coll[i].addEventListener("click", function() {
+//     this.classList.toggle("active");
+//     var content = this.nextElementSibling;
+//     if (content.style.display === "block") {
+//       content.style.display = "none";
+//     } else {
+//       content.style.display = "block";
+//     }
+//   });
+// }
+
+window.dropdownChange = function() {
+  let e = document.getElementById('cityDropdown');
+  let g = e.value;
+  console.log(g);
 }
+
+cityRankings();
+sectionNode();
 sectionPopulator();
 
-
-// FUNCTIONS FOR TOGGLES AND WEIGHTS
 window.toggleFunction = function(e) {
   if(e.checked === true) {
     metricDetails.filter((f)=>{
@@ -181,8 +226,9 @@ window.toggleFunction = function(e) {
       f.id == e.parentNode.parentNode.parentNode.parentNode.id;
     })[0]['active'] = 0;
   };
-  overallSccore();
+  overallScore();
   overallRank();
+  topRanks();
 };
 
 window.weightFunction = function(e) {
@@ -191,7 +237,6 @@ window.weightFunction = function(e) {
     f.id == e.parentNode.parentNode.parentNode.id;
   })[0]['weight'] = parseInt(e.value,10);
   weightUpdate(e);
-  weightedCalc();
 };
 
 let topRanks = () => {
@@ -210,11 +255,9 @@ let topRanks = () => {
   });
   for(let i=0;i<30;i++){
     document.getElementById(i+1).innerHTML = (i+1) + ". " + finalRank[i][0] + ", " + finalRank[i][1];
-    console.log(document.getElementById(i));
   }
 }
 topRanks();
-
 
 export {metricDetails} from './data.js';
 export {topRanks};

@@ -1,18 +1,41 @@
+/* Color Theme Swatches in Hex */
+.You-Move-Me-1-hex { color: #000000; }
+.You-Move-Me-2-hex { color: #FFFFFF; }
+.You-Move-Me-3-hex { color: #A6CE39; }
+.You-Move-Me-4-hex { color: #6A6A6A; }
+.You-Move-Me-5-hex { color: #E2E3E4; }
+#q {color: #F7F7F7;}
+#r {color: #0D0D0D;}
+#s {color: #787878;}
+#t {color: #D6D6D6;}
+#u {color: #738F28;}
+#v {color: #5B701F;}
+#w {color: #B1DB3D;}
+#x {color: #596E1F;}
+#y {color: #C8E183;}
+
 body {
   max-width: 475px;
   margin-left: auto;
   margin-right: auto;
-  background-color: #FFFDF7;
+  font-family: 'PT Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  color: #0D0D0D;
+}
+
+a {
+  color: #738F28;
 }
 
 section {
-  border:2px solid #B7D8E8;
+  border:2px solid #D6D6D6;
   border-radius: 5px;
   background-color: transparent;
   vertical-align: top;
   padding: 0px;
   margin-bottom: 10px;
   position: relative;
+  /* box-shadow: 0px 5px 30px 0px #787878; */
 }
 
 header {
@@ -31,7 +54,7 @@ header {
 }
 
 .sectionHead {
-  background-color: #C9EDFF;
+  background-color: #D6D6D6;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   padding: 0 0 3px 5px;
@@ -40,7 +63,7 @@ header {
 }
 
 #intro {
-  background-color: mediumaquamarine;
+  background-color: #F7F7F7;
 }
 
 #topCities {
@@ -63,25 +86,25 @@ header {
 
 #rank10 { 
   float:left;  
-  background-color: khaki; 
+  background-color: #FFFFFF; 
   width:33%; 
   height:auto;
 } 
 #rank20 { 
   float:left;  
-  background-color: pink;
+  background-color: #F7F7F7;
   width:34%; 
   height:auto; 
 } 
 #rank30 { 
   float:right; 
-  background-color: khaki; 
+  background-color: #FFFFFF; 
   width:33%; 
   height:auto; 
 } 
 
 .metric {
-  border-bottom: 1px solid #B7D8E8;
+  border-bottom: 1px solid #D6D6D6;
   /* display: none; */
 }
 
@@ -90,20 +113,24 @@ header {
 }
 
 .expand {
-  border: 2px solid steelblue;
-  background-color: lightcyan;
+  border: 2px solid rgb(184, 214, 102);
+  background-color: rgb(242, 255, 207);
   border-radius: 100%;
   padding: 0 3px 0 4px;
-  color: steelblue;
+  color: rgb(184, 214, 102);
   font-weight: 700;
   font-size: small;
   text-decoration: none;
   cursor: pointer;
 }
 
+.name {
+  padding-left: 5px;
+}
+
 #profileTop {
   /* position: relative; */
-  background-color: lightgreen;
+  background-color: #F7F7F7;
 }
 
 #city {
@@ -136,25 +163,25 @@ header {
 
 /* All the contents of the metric top container */
 .top {
-  background-color: mistyrose;
+  background-color: #E2E3E4;
   padding: 2px 3px 5px 3px;
 }
 
 .mid {
   padding: 0 3px 0 3px;
-  background-color: beige;
+  background-color: #FFFFFF;
 }
 
 .bottom {
   padding: 0 3px 3px 3px;
-  background-color: navajowhite;
+  background-color: #F7F7F7;
 }
 
 .top10 {
-  border: 2px solid #B7D8E8;
+  border: 2px solid rgb(184, 214, 102);
   border-radius: 100%;
-  color: #B7D8E8;
-  background-color: lightcyan;
+  color: rgb(184, 214, 102);
+  background-color: rgb(242, 255, 207);
   padding: 0 4px 0 4px;
   margin: 0 0 0 3px;
   font-weight: 700;
@@ -166,12 +193,13 @@ header {
 }
 .popUpTitle {
   text-align: center;
-  background-color: skyblue;
+  background-color: rgb(184, 214, 102);;
+  padding: 0 2px 0 2px;
 }
 
 input[type=number]{
   width: 40px;
-  border-color: #B7D8E8;
+  border-color: rgb(184, 214, 102);
   border-style: solid;
 }
 
@@ -197,14 +225,16 @@ input[type=number]{
 .top10 .top10List {
   visibility: hidden;
   width: 120px;
-  background-color: steelblue;
-  color: #fff;
+  background-color: rgb(242, 255, 207);
+  color: #738F28;
   text-align: left;
-  padding: 5px 2px;
+  padding: 0px 0px 2px 0px;
   border-radius: 6px;
   position: absolute;
   z-index: 1;
-  /* bottom: 125%; */
+  list-style: none;
+  border: 2px solid rgb(184, 214, 102);;
+  bottom: 125%;
   left: 50%;
   margin-left: -60px;
   opacity: 0;
@@ -232,7 +262,7 @@ input[type=number]{
   position: relative;
   display: inline-block;
   float: right;
-  width: 50px;
+  width: 40px;
   height: 22px;
 }
 
@@ -251,7 +281,7 @@ input[type=number]{
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: pink;
+  background-color: rgb(242, 255, 207);
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -259,34 +289,40 @@ input[type=number]{
 .slider:before {
   position: absolute;
   content: "";
-  height: 14px;
+  height: 16px;
   width: 16px;
   left: 4px;
-  bottom: 4px;
+  bottom: 2px;
   background-color: white;
+  border: 1px solid rgb(184, 214, 102);
   -webkit-transition: .4s;
   transition: .4s;
 }
 
 input:checked + .slider {
-  background-color: #B7D8E8;
+  background-color: rgb(184, 214, 102);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #B7D8E8;
+  box-shadow: 0 0 1px rgb(184, 214, 102);
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
+  -webkit-transform: translateX(15px);
+  -ms-transform: translateX(15px);
+  transform: translateX(15px);
 }
 
 /* Rounded sliders */
-.slider.round {
+/* .slider.round {
   border-radius: 10px;
 }
 
 .slider.round:before {
   border-radius: 40%;
+} */
+
+.dropdown {
+  position: relative;
+  display: inline-block;
 }
