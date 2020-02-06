@@ -166,7 +166,7 @@ let sectionPopulator = () => {
   document.querySelector('#city').appendChild(dropdown);
   let dropdownContent = document.createElement('select');
   dropdownContent.setAttribute('id','cityDropdown');
-  dropdownContent.setAttribute('onchange','dropdownChange()');// Enter dropdown function here.
+  dropdownContent.setAttribute('onchange','dropdownChange()');
   document.querySelector('.dropdown').appendChild(dropdownContent);
   let dropdownPrompt = document.createElement('option');
   dropdownPrompt.innerHTML = 'Select A City';
@@ -179,7 +179,6 @@ let sectionPopulator = () => {
     el.value = cities;
     dropdownItems.appendChild(el);
   }
-
   let switches = document.querySelectorAll('.checker');
   let weights = document.querySelectorAll('.weight');
   for (let i=0; i<switches.length; i++){
@@ -188,7 +187,9 @@ let sectionPopulator = () => {
   }
 }
 
+// let testA = document.querySelector('#weather > div#sunshine');
 
+// console.log(testA);
 
 // var coll = document.getElementsByClassName('expand');
 
@@ -206,8 +207,22 @@ let sectionPopulator = () => {
 
 window.dropdownChange = function() {
   let e = document.getElementById('cityDropdown');
-  let g = e.value;
-  console.log(g);
+  let g = e.value.split(', ');
+  const cityRecord = data.filter((f)=>{
+    return f.city.includes(g[0]) &&
+           f.state.includes(g[1]);
+  })
+  document.getElementById('state').innerHTML = "State: " + cityRecord[0].state;
+  document.getElementById('cityPop').innerHTML = 'City Population: ' + cityRecord[0].cityPop[0];
+  document.getElementById('metroPop').innerHTML = 'Metro Population: ' + cityRecord[0].metroPop[0];
+  document.getElementById('popDensity').innerHTML = 'City Density: ' + cityRecord[0].popDensity[0] + '/mile';
+  for(let i=5;i<dataKeys.length-1;i++){
+  document.querySelector('[id=' + [dataKeys[i]][0] + '] .rank span').innerHTML = cityRecord[0][dataKeys[i]][1];
+  let temp = document.querySelector('[id=' + [dataKeys[i]][0] + '] .score');
+  if (cityRecord[0][dataKeys[i]][0] < 1) {
+    temp.innerHTML = (cityRecord[0][dataKeys[i]][0] * 100).toFixed(1) + "%";
+  } else { temp.innerHTML = cityRecord[0][dataKeys[i]][0];}
+  }
 }
 
 cityRankings();

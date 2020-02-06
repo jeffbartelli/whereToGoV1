@@ -14,6 +14,12 @@
 #x {color: #596E1F;}
 #y {color: #C8E183;}
 
+html {
+  background-image: url("images/background2.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 body {
   max-width: 475px;
   margin-left: auto;
@@ -28,8 +34,8 @@ a {
 }
 
 section {
-  border:2px solid #D6D6D6;
-  border-radius: 5px;
+  /* border:2px solid #D6D6D6;
+  border-radius: 5px; */
   background-color: transparent;
   vertical-align: top;
   padding: 0px;
@@ -55,8 +61,8 @@ header {
 
 .sectionHead {
   background-color: #D6D6D6;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
+  /* border-top-left-radius: 3px;
+  border-top-right-radius: 3px; */
   padding: 0 0 3px 5px;
   font-size: larger;
   font-weight: bold;
@@ -68,7 +74,7 @@ header {
 
 #topCities {
   position: sticky;
-  top: 22px;
+  top: 19px;
   z-index: 1;
   background-color: white;
 }
@@ -86,19 +92,21 @@ header {
 
 #rank10 { 
   float:left;  
-  background-color: #FFFFFF; 
+  background-color: #C8E183; 
   width:33%; 
   height:auto;
 } 
+
 #rank20 { 
   float:left;  
-  background-color: #F7F7F7;
+  background-color: rgb(217, 236, 164);
   width:34%; 
   height:auto; 
 } 
+
 #rank30 { 
   float:right; 
-  background-color: #FFFFFF; 
+  background-color: rgb(236, 248, 203) 
   width:33%; 
   height:auto; 
 } 
@@ -133,7 +141,7 @@ header {
   background-color: #F7F7F7;
 }
 
-#city {
+/* #city {
   position: relative;
   display: inline-block;
   float: left;
@@ -145,9 +153,9 @@ header {
   display: inline-block;
   float: right;
   width: 50%;
-}
+} */
 
-#cityPop {
+/* #cityPop {
   position: relative;
   display: inline-block;
   float: left;
@@ -159,7 +167,7 @@ header {
   display: inline-block;
   float: right;
   width: 33%;
-}
+} */
 
 /* All the contents of the metric top container */
 .top {
@@ -326,3 +334,11 @@ input:checked + .slider:before {
   position: relative;
   display: inline-block;
 }
+
+/* #weather > div#sunshine,
+#weather > div#precip {
+  display: none;
+  transition: height .5s;
+  height: 0;
+  overflow: hidden;
+} */
