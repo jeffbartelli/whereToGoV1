@@ -1097,7 +1097,7 @@ let metricDetails = [
     description:"Based on NOAA data, this metric is the average percentage of possible sunshine.",
     source:"https://www.nerdwallet.com/blog/sunniest-cities/",
     score:null,
-    scoreLabel:"Days Per Year: ",
+    scoreLabel:"% Days Per Year: ",
     weight:100,
     active:1,
   },
@@ -1427,5 +1427,6 @@ const cityList = [];
 for(let i=0;i<data.length;i++){
   cityList.push(data[i]['city'][0] + ', ' + data[i]['state'][0]);
 };
+cityList.sort((a,b)=>{return a-b});
 
 export {data, metricDetails, rankOrder, cityList};

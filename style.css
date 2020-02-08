@@ -105,8 +105,8 @@ header {
 } 
 
 #rank30 { 
-  float:right; 
-  background-color: rgb(236, 248, 203) 
+  float:right;
+  background-color: rgb(236, 248, 203);;
   width:33%; 
   height:auto; 
 } 

@@ -207,6 +207,7 @@ let sectionPopulator = () => {
 
 window.dropdownChange = function() {
   let e = document.getElementById('cityDropdown');
+  localStorage.setItem('dropdownCity',e.value);
   let g = e.value.split(', ');
   const cityRecord = data.filter((f)=>{
     return f.city.includes(g[0]) &&
@@ -225,9 +226,15 @@ window.dropdownChange = function() {
   }
 }
 
+window.persistValues = function() {
+  document.getElementById('cityDropdown').value=localStorage.getItem('dropdownCity');
+  dropdownChange();
+}
+
 cityRankings();
 sectionNode();
 sectionPopulator();
+persistValues();
 
 window.toggleFunction = function(e) {
   if(e.checked === true) {
