@@ -38,7 +38,7 @@ let sectionNode = () => {
   const checkbox = document.createElement('input');
   checkbox.setAttribute('type','checkbox');
   checkbox.setAttribute('class','checker');
-  checkbox.setAttribute('onchange','#');
+  checkbox.setAttribute('onchange','toggleFunctionSections(this)');
   checkbox.setAttribute('value','');
   checkbox.checked = true;
   switcher.appendChild(checkbox);
@@ -260,19 +260,19 @@ window.persistValues = function() {
 
 
 window.toggleFunction = function(e) {
-  let localActive = e.id.replace(/\d+$/,'') + "-" + 'active';
-  if(e.checked === true) {
+  let localActive = e.id.replace(/\d+$/,'') + '-active';
+    if(e.checked === true) {
     metricDetails.filter((f)=>{
-      return f.section == e.parentNode.parentNode.parentNode.parentNode.parentNode.id &&
-      f.id == e.parentNode.parentNode.parentNode.parentNode.id;
+      return f.id == e.parentNode.parentNode.parentNode.id;
     })[0]['active'] = 1;
     localStorage.setItem(localActive,1);
+    e.value = 1;
   } else {
     metricDetails.filter((f)=>{
-      return f.section == e.parentNode.parentNode.parentNode.parentNode.parentNode.id &&
-      f.id == e.parentNode.parentNode.parentNode.parentNode.id;
+      return f.id == e.parentNode.parentNode.parentNode.id;
     })[0]['active'] = 0;
     localStorage.setItem(localActive,0);
+    e.value = 0;
   };
   overallScore();
   overallRank();
@@ -280,11 +280,38 @@ window.toggleFunction = function(e) {
 };
 
 
+window.toggleFunctionSections = function(e) {
+  let localActive = e.parentNode.parentNode.parentNode.id + "-active";
+  let childSwitches = (e.parentNode.parentNode.nextElementSibling).getElementsByClassName('checker');
+  if(e.checked === true) {
+    localStorage.setItem(localActive,1);
+    for(let i=0; i<childSwitches.length; i++){
+      metricDetails.filter((f)=>{
+        return f.id.includes(childSwitches[i].id.replace(/\d+$/,''));
+      })[0]['active'] = 1;
+      childSwitches[i].value = 1;
+      childSwitches[i].checked = true;
+    }
+  } else {
+    localStorage.setItem(localActive,0);
+    for(let i=0; i<childSwitches.length; i++){
+      metricDetails.filter((f)=>{
+        return f.id.includes(childSwitches[i].id.replace(/\d+$/,''));
+      })[0]['active'] = 0;
+      childSwitches[i].value = 0;
+      childSwitches[i].checked = false;
+    };
+  };
+  overallScore();
+  overallRank();
+  topRanks();
+}
+
+
 window.weightFunction = function(e) {
-  let localActive = e.id.replace(/\d+$/,'') + "-" + 'weight';
+  let localActive = e.id.replace(/\d+$/,'') + '-weight';
   metricDetails.filter((f)=>{
-    return f.section == e.parentNode.parentNode.parentNode.parentNode.id &&
-    f.id == e.parentNode.parentNode.parentNode.id;
+    return f.id == e.parentNode.parentNode.id;
   })[0]['weight'] = parseInt(e.value,10);
   localStorage.setItem(localActive,parseInt(e.value,10));
   weightUpdate(e);
@@ -318,7 +345,7 @@ persistValues();
 topRanks();
 
 
-let sectColl = document.getElementsByClassName('expandSection');
+let sectColl = document.getElementsByClassName('expandMetric');
 
 for (let i=0; i<sectColl.length; i++){
   sectColl[i].addEventListener("click", function() {

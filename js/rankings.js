@@ -23,12 +23,14 @@ let sortAndRank = () => {
       ranks.forEach((item,i)=>{
         Data.data[i][dataKeys[j]][1] = ranks[i];
       });
+    // console.log(Math.max.apply(null,ranks)); 
     temp = [];
     testSort = [];
     ranks = [];
     }
   }
 }
+
 
 function weightedCalc() {
   for(let j=0; j<Data.data.length; j++){
@@ -42,10 +44,16 @@ function weightedCalc() {
         return f.id == Object.keys(Data.data[j])[i];
       })[0].weight)/100;
       Data.data[j][dataKeys[i]][2] = (100 - count + rank) * weight;
-    }
+      // Fix for eliminating bottom ranks from overall score
+      if(Data.data[j][dataKeys[i]][0] === null) {
+        Data.data[j][dataKeys[i]][1] = null;
+        Data.data[j][dataKeys[i]][2] = null;
+      };
+    };
     Data.data[j]['metroClass'][2] = (100 - 34 + Data.data[j]['metroClass'][1]);
   }
 }
+
 
 let overallScore = () => {
   for(let j=0;j<Data.data.length;j++){
@@ -57,13 +65,16 @@ let overallScore = () => {
       })[0]['active'];
       if (isActive == 1){
         tempAvg += Data.data[j][dataKeys[i]][2];
+      }
+      if (Data.data[j][dataKeys[i]][2] != null){
         avgCount++;
       }
     }
     tempAvg /= avgCount;
     Data.data[j][dataKeys[0]][1] = tempAvg;
-  }
+  };
 }
+
 
 let overallRank = () => {
   for(let j=0;j<Data.data.length;j++){
@@ -105,6 +116,9 @@ function weightUpdate(e) {
   ranks = temp.slice().map(function(v){return testSort.indexOf(v)+1});
     let weightedScore = (100 - count + ranks[i]) * weight;
     Data.data[i][el][2] = weightedScore;
+    if(Data.data[i][el][0] === null) {
+      Data.data[i][el][2] = null;
+    }
     temp = [];
     testSort = [];
     ranks = [];
@@ -118,6 +132,8 @@ sortAndRank();
 weightedCalc();
 overallScore();
 overallRank();
+
+console.log(Data.data[33]);
 
 export {data} from './data.js';
 export {weightUpdate, weightedCalc, overallScore, overallRank, dataKeys};
