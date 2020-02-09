@@ -68,6 +68,13 @@ header {
   font-weight: bold;
 }
 
+.sectionContent {
+  /* display: none; */
+  /* max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out; */
+}
+
 #intro {
   background-color: #F7F7F7;
 }
@@ -76,6 +83,7 @@ header {
   /* position: sticky; */
   /* top: 19px; */
   z-index: 1;
+  overflow: unset;
   /* margin-bottom: 15px; */
   /* background-color: white; */
 }
@@ -121,7 +129,7 @@ header {
   font-size: large;
 }
 
-.expand {
+.expandSection, .expandMetric {
   border: 2px solid rgb(184, 214, 102);
   background-color: rgb(242, 255, 207);
   border-radius: 100%;

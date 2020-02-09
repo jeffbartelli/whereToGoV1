@@ -24,8 +24,9 @@ let sectionNode = () => {
   // sectionHead
   sectionHead = document.createElement('div');
   sectionHead.setAttribute('class','sectionHead');
-  const expand = document.createElement('span');
-  expand.setAttribute('class','expand');
+  const expand = document.createElement('button');
+  expand.setAttribute('class','expandSection');
+  expand.setAttribute('type','button');
   expand.innerHTML = '+';
   sectionHead.appendChild(expand);
   const sectionLabel = document.createElement('label');
@@ -144,6 +145,7 @@ let sectionPopulator = () => {
       metricItem[i].querySelector('.source > a').setAttribute('href',newArray[0]['source']);
       metricItem[i].querySelector('.scoreLabel').innerHTML = newArray[0]['scoreLabel'];
       metricItem[i].querySelector('.checker').setAttribute('onchange','toggleFunction(this)');
+      metricItem[i].querySelector('.metricHead button').setAttribute('class','expandMetric');
       let rankArray = [];
       for(let n=0; n<data.length;n++){
         let newArray2 = [];
@@ -315,6 +317,25 @@ sectionPopulator();
 persistValues();
 topRanks();
 
+
+let sectColl = document.getElementsByClassName('expandSection');
+
+for (let i=0; i<sectColl.length; i++){
+  sectColl[i].addEventListener("click", function() {
+    this.classList.toggle('active');
+    let content = this.parentNode.nextElementSibling;
+    // if (content.style.display === "block") {
+    //   content.style.display = "none";
+    // } else {
+    //   content.style.display = "block";
+    // }
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
+}
 
 export {metricDetails} from './data.js';
 export {topRanks};
