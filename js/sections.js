@@ -39,7 +39,7 @@ let sectionNode = () => {
   checkbox.setAttribute('type','checkbox');
   checkbox.setAttribute('class','checker');
   checkbox.setAttribute('onchange','toggleFunction(this)');
-  checkbox.setAttribute('value','1');
+  checkbox.setAttribute('value','');
   checkbox.checked = true;
   switcher.appendChild(checkbox);
   const slider = document.createElement('span');
@@ -47,7 +47,7 @@ let sectionNode = () => {
   switcher.appendChild(slider);
   const number = document.createElement('input');
   number.setAttribute('type','number');
-  number.setAttribute('value','');
+  number.setAttribute('value','100');
   number.setAttribute('max','100');
   number.setAttribute('min','0');
   number.setAttribute('maxlength','3');
@@ -130,6 +130,7 @@ let sectionPopulator = () => {
       });
       metricItem[i].querySelector('.name').innerHTML = newArray[0]['metricName'];
       metricItem[i].querySelector('.weight').value = newArray[0]['weight'];
+      // INSERT LOCALSTORAGE FOR SWITCH HERE
       metricItem[i].querySelector('.checker').value = newArray[0]['active'];
       metricItem[i].querySelector('.description').innerHTML = newArray[0]['description'];
       metricItem[i].querySelector('.source > a').setAttribute('href',newArray[0]['source']);
@@ -187,24 +188,6 @@ let sectionPopulator = () => {
   }
 }
 
-// let testA = document.querySelector('#weather > div#sunshine');
-
-// console.log(testA);
-
-// var coll = document.getElementsByClassName('expand');
-
-// for (let i = 0; i < coll.length; i++) {
-//   coll[i].addEventListener("click", function() {
-//     this.classList.toggle("active");
-//     var content = this.nextElementSibling;
-//     if (content.style.display === "block") {
-//       content.style.display = "none";
-//     } else {
-//       content.style.display = "block";
-//     }
-//   });
-// }
-
 window.dropdownChange = function() {
   let e = document.getElementById('cityDropdown');
   localStorage.setItem('dropdownCity',e.value);
@@ -227,26 +210,55 @@ window.dropdownChange = function() {
 }
 
 window.persistValues = function() {
-  document.getElementById('cityDropdown').value=localStorage.getItem('dropdownCity');
-  dropdownChange();
+  if(localStorage.getItem('dropdownCity')){
+    document.getElementById('cityDropdown').value=localStorage.getItem('dropdownCity');
+    dropdownChange();
+  }
+  for(let i=0;i<metricDetails.length; i++) {
+    let metricSwitch = document.querySelector('[id=' + metricDetails[i]['id'] + '] .checker');
+    if(localStorage.getItem(metricDetails[i]['id'] + '-' + 'active')) {
+      let retrieveActive = localStorage.getItem(metricDetails[i]['id'] + '-' + 'active');
+      metricDetails.filter((f)=>{
+        return f.id.includes(metricDetails[i]['id']);
+      })[0]['active'] = retrieveActive;
+      if (retrieveActive == 1) {
+        metricSwitch.value = 1;
+        metricSwitch.checked = true;
+      } else if (retrieveActive == 0) {
+        metricSwitch.value = 0;
+        metricSwitch.checked = false;
+      }
+    }
+    let metricWeight = document.querySelector('[id=' + metricDetails[i]['id'] + '] .weight');
+    if(localStorage.getItem(metricDetails[i]['id'] + '-' + 'weight')) {
+      let retrieveWeight = localStorage.getItem(metricDetails[i]['id'] + '-' + 'weight');
+      metricDetails.filter((f)=>{
+        return f.id.includes(metricDetails[i]['id']);
+      })[0]['weight'] = retrieveWeight;
+      metricWeight.value = parseInt(retrieveWeight,10);
+      let metricPush = {
+        id: metricDetails[i]['id'],
+        value: metricWeight.value 
+      }
+      weightUpdate(metricPush);
+    }
+  }
 }
 
-cityRankings();
-sectionNode();
-sectionPopulator();
-persistValues();
-
 window.toggleFunction = function(e) {
+  let localActive = e.id.replace(/\d+$/,'') + "-" + 'active';
   if(e.checked === true) {
     metricDetails.filter((f)=>{
       return f.section == e.parentNode.parentNode.parentNode.parentNode.parentNode.id &&
       f.id == e.parentNode.parentNode.parentNode.parentNode.id;
     })[0]['active'] = 1;
+    localStorage.setItem(localActive,1);
   } else {
     metricDetails.filter((f)=>{
       return f.section == e.parentNode.parentNode.parentNode.parentNode.parentNode.id &&
       f.id == e.parentNode.parentNode.parentNode.parentNode.id;
     })[0]['active'] = 0;
+    localStorage.setItem(localActive,0);
   };
   overallScore();
   overallRank();
@@ -254,10 +266,12 @@ window.toggleFunction = function(e) {
 };
 
 window.weightFunction = function(e) {
+  let localActive = e.id.replace(/\d+$/,'') + "-" + 'weight';
   metricDetails.filter((f)=>{
     return f.section == e.parentNode.parentNode.parentNode.parentNode.id &&
     f.id == e.parentNode.parentNode.parentNode.id;
   })[0]['weight'] = parseInt(e.value,10);
+  localStorage.setItem(localActive,parseInt(e.value,10));
   weightUpdate(e);
 };
 
@@ -279,6 +293,11 @@ let topRanks = () => {
     document.getElementById(i+1).innerHTML = (i+1) + ". " + finalRank[i][0] + ", " + finalRank[i][1];
   }
 }
+
+cityRankings();
+sectionNode();
+sectionPopulator();
+persistValues();
 topRanks();
 
 export {metricDetails} from './data.js';

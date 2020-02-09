@@ -38,7 +38,7 @@ function weightedCalc() {
         if(Data.data[k][dataKeys[i]][0] !== null){count++};
       });
       let rank = (count+1)-(Data.data[j][dataKeys[i]][1]);
-      let weight = (Data.metricDetails.filter((f)=>{
+      let weight = (metricDetails.filter((f)=>{
         return f.id == Object.keys(Data.data[j])[i];
       })[0].weight)/100;
       Data.data[j][dataKeys[i]][2] = (100 - count + rank) * weight;

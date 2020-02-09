@@ -1065,7 +1065,7 @@ const data = [
     folfCourses:[8],
     distBeach:[627],
     sportRoutes:[100],
-    climbingGyms:[1],
+    climbingGyms:[2],
     sunshine:[0.55],
     precip:[95],
     westOrRest:[1],
@@ -1423,10 +1423,14 @@ let metricDetails = [
 ]
 const rankOrder = [null,null,0,0,0,1,0,1,0,0,0,1,1,0,0,0,0,1,0,1,1,1,1,0,1,1,1,1,1,0];
 
-const cityList = [];
+let cityList = [];
 for(let i=0;i<data.length;i++){
   cityList.push(data[i]['city'][0] + ', ' + data[i]['state'][0]);
 };
-cityList.sort((a,b)=>{return a-b});
+cityList = cityList.sort(function(a,b){
+  if (a > b) {return 1;}
+  if (b > a) {return -1;}
+  return 0;
+});
 
 export {data, metricDetails, rankOrder, cityList};
