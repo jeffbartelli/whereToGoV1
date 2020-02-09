@@ -16,35 +16,43 @@ let cityRankings = () => {
   }
 }
 
-let metric;
-// INDIVIDUAL METRIC NODE FOR CLONING
+let metricHead;
+let metricContent;
+let sectionHead;
+// INDIVIDUAL METRIC TEMPLATE FOR CLONING. INCLUDES TWO NODES
 let sectionNode = () => {
-  metric = document.createElement('div');
-  metric.setAttribute('class','metric');
-  const top1 = document.createElement('div');
-  top1.setAttribute('class','top');
-  metric.appendChild(top1);
+  // sectionHead
+  sectionHead = document.createElement('div');
+  sectionHead.setAttribute('class','sectionHead');
   const expand = document.createElement('span');
   expand.setAttribute('class','expand');
   expand.innerHTML = '+';
-  top1.appendChild(expand);
-  const name = document.createElement('label');
-  name.setAttribute('class','name');
-  name.innerHTML = '[Metric Name]';
-  top1.appendChild(name);
+  sectionHead.appendChild(expand);
+  const sectionLabel = document.createElement('label');
+  sectionLabel.setAttribute('class','sectionLabel');
+  sectionHead.appendChild(sectionLabel);
   const switcher = document.createElement('label');
   switcher.setAttribute('class','switch');
-  top1.appendChild(switcher);
+  sectionHead.appendChild(switcher);
   const checkbox = document.createElement('input');
   checkbox.setAttribute('type','checkbox');
   checkbox.setAttribute('class','checker');
-  checkbox.setAttribute('onchange','toggleFunction(this)');
+  checkbox.setAttribute('onchange','#');
   checkbox.setAttribute('value','');
   checkbox.checked = true;
   switcher.appendChild(checkbox);
   const slider = document.createElement('span');
   slider.setAttribute('class','slider round');
   switcher.appendChild(slider);
+  // metricHead
+  metricHead = document.createElement('div');
+  metricHead.setAttribute('class','metricHead');
+  metricHead.appendChild(expand.cloneNode(true));
+  const name = document.createElement('label');
+  name.setAttribute('class','name');
+  name.innerHTML = '[Metric Name]';
+  metricHead.appendChild(name);
+  metricHead.appendChild(switcher.cloneNode(true));
   const number = document.createElement('input');
   number.setAttribute('type','number');
   number.setAttribute('value','100');
@@ -54,20 +62,17 @@ let sectionNode = () => {
   number.setAttribute('onchange','weightFunction(this)');
   number.setAttribute('class','weight');
   number.setAttribute('required','');
-  top1.appendChild(number);
-  const mid = document.createElement('div');
-  mid.setAttribute('class','mid');
-  metric.appendChild(mid);
-  const description = document.createElement('label')
+  metricHead.appendChild(number);
+  // metricContent
+  metricContent = document.createElement('div');
+  metricContent.setAttribute('class','metricContent');
+  const description = document.createElement('label');
   description.setAttribute('class','description');
-  description.innerHTML = 'Description: []';
-  mid.appendChild(description);
-  const bottom = document.createElement('div');
-  bottom.setAttribute('class','bottom');
-  metric.appendChild(bottom);
+  description.innerHTML = 'Description...';
+  metricContent.appendChild(description);
   const source = document.createElement('label');
   source.setAttribute('class','source');
-  bottom.appendChild(source);
+  metricContent.appendChild(source);
   let sourceLink = document.createElement('a');
   sourceLink.setAttribute('href','#');
   sourceLink.setAttribute('target','_blank');
@@ -76,7 +81,8 @@ let sectionNode = () => {
   const top10 = document.createElement('span');
   top10.setAttribute('class','top10');
   top10.innerHTML = '?';
-  bottom.appendChild(top10);
+  metricContent.appendChild(top10);
+  // metricContent > Top 10 PopUp
   const top10List = document.createElement('ul');
   top10List.setAttribute('class','top10List');
   const popUpTitle = document.createElement('li');
@@ -90,55 +96,58 @@ let sectionNode = () => {
     top10List.appendChild(x);
   };
   top10.appendChild(top10List);
+  // metricContent > end Top 10 popUp
   const rank = document.createElement('label');
   rank.setAttribute('class','rank');
   rank.innerHTML = 'Rank: '
-  bottom.appendChild(rank);
+  metricContent.appendChild(rank);
   const rankVal = document.createElement('span');
   rankVal.innerHTML = '[]';
   rank.appendChild(rankVal);
   const score = document.createElement('label');
   score.setAttribute('class','score');
   score.innerHTML = '[score]';
-  bottom.appendChild(score);
+  metricContent.appendChild(score);
   const scoreLabel = document.createElement('div');
   scoreLabel.setAttribute('class','scoreLabel');
-  bottom.appendChild(scoreLabel);
+  metricContent.appendChild(scoreLabel);
 }
 
-// INSERT CODE FOR TOP OF PROFILE SECTION HERE
 
-// POPULATE THE METRICS
 let sectionPopulator = () => {
   let sectionList = Array.from(document.getElementById('metricContainer').children);
   for (let j=0;j<sectionList.length;j++){
-    let metricItem = Array.from(document.getElementById(sectionList[j]['id']).children);
+    sectionList[j].insertBefore(sectionHead.cloneNode(true), sectionList[j].firstChild);
+    document.querySelector('[id=' + sectionList[j]['id'] + '] .sectionLabel').innerHTML = sectionList[j]['id'];
+    
+    let metricItem = Array.from(document.querySelector('[id=' + sectionList[j]['id'] + '] .sectionContent').children);
     if(sectionList[j]['id'] == 'profile'){
-      for(let i=1;i<6;i++){
+      for(let i=0;i<5;i++){
         metricItem[i].innerHTML = metricDetails.filter((el)=>{
           return el.id == metricItem[i]['id'];
         })[0]['metricName'] + ': ';
       }
     }
     let i;
-    sectionList[j]['id'] == 'profile' ? i=6 : i=1;
+    sectionList[j]['id'] == 'profile' ? i=5 : i=0;
     for (i; i<metricItem.length; i++) {
-      metricItem[i].appendChild(metric.cloneNode(true));
+      metricItem[i].appendChild(metricHead.cloneNode(true));
+      metricItem[i].appendChild(metricContent.cloneNode(true));
       let newArray = metricDetails.filter((el)=>{
         return el.section == sectionList[j]['id'] &&
         el.id == metricItem[i]['id'];
       });
       metricItem[i].querySelector('.name').innerHTML = newArray[0]['metricName'];
       metricItem[i].querySelector('.weight').value = newArray[0]['weight'];
-      // INSERT LOCALSTORAGE FOR SWITCH HERE
       metricItem[i].querySelector('.checker').value = newArray[0]['active'];
       metricItem[i].querySelector('.description').innerHTML = newArray[0]['description'];
       metricItem[i].querySelector('.source > a').setAttribute('href',newArray[0]['source']);
       metricItem[i].querySelector('.scoreLabel').innerHTML = newArray[0]['scoreLabel'];
+      metricItem[i].querySelector('.checker').setAttribute('onchange','toggleFunction(this)');
       let rankArray = [];
       for(let n=0; n<data.length;n++){
         let newArray2 = [];
-        newArray2.push(data[n][metricItem[i]['id']][1]);
+        newArray2.push(data[n][metricItem[i]['id']][1]); 
         // newArray2.push(data[n][metricItem[i]['id']][0]);
         newArray2.push(data[n].city[0]);
         newArray2.push(data[n].state[0]);
@@ -156,7 +165,7 @@ let sectionPopulator = () => {
   };
   const profileTop = document.createElement('div');
   profileTop.setAttribute('id','profileTop');
-  document.getElementById('profile').insertBefore(profileTop, document.getElementById('profile').childNodes[2]);
+  document.querySelector('#profile .sectionContent').insertBefore(profileTop,document.querySelector('#profile .sectionContent').firstChild);
   profileTop.appendChild(document.querySelector('#city'));
   profileTop.appendChild(document.querySelector('#state'));
   profileTop.appendChild(document.querySelector('#cityPop'));
@@ -180,13 +189,15 @@ let sectionPopulator = () => {
     el.value = cities;
     dropdownItems.appendChild(el);
   }
-  let switches = document.querySelectorAll('.checker');
-  let weights = document.querySelectorAll('.weight');
+  let switches = document.querySelectorAll('.metricHead .switch .checker');
+  let weights = document.querySelectorAll('.metricHead .weight');
   for (let i=0; i<switches.length; i++){
-    switches[i].setAttribute('id',document.querySelectorAll('.checker')[i].parentNode.parentNode.parentNode.parentNode.id + (i+1));
-    weights[i].setAttribute('id',document.querySelectorAll('.checker')[i].parentNode.parentNode.parentNode.parentNode.id + (i+1));
+    switches[i].setAttribute('id',document.querySelectorAll('.metricHead')[i].parentNode.id + 1);
+    weights[i].setAttribute('id',document.querySelectorAll('.metricHead')[i].parentNode.id + 2);
   }
+  document.querySelector('#state').style.display = "none";
 }
+
 
 window.dropdownChange = function() {
   let e = document.getElementById('cityDropdown');
@@ -196,7 +207,6 @@ window.dropdownChange = function() {
     return f.city.includes(g[0]) &&
            f.state.includes(g[1]);
   })
-  document.getElementById('state').innerHTML = "State: " + cityRecord[0].state;
   document.getElementById('cityPop').innerHTML = 'City Population: ' + cityRecord[0].cityPop[0];
   document.getElementById('metroPop').innerHTML = 'Metro Population: ' + cityRecord[0].metroPop[0];
   document.getElementById('popDensity').innerHTML = 'City Density: ' + cityRecord[0].popDensity[0] + '/mile';
@@ -208,6 +218,7 @@ window.dropdownChange = function() {
   } else { temp.innerHTML = cityRecord[0][dataKeys[i]][0];}
   }
 }
+
 
 window.persistValues = function() {
   if(localStorage.getItem('dropdownCity')){
@@ -245,6 +256,7 @@ window.persistValues = function() {
   }
 }
 
+
 window.toggleFunction = function(e) {
   let localActive = e.id.replace(/\d+$/,'') + "-" + 'active';
   if(e.checked === true) {
@@ -265,6 +277,7 @@ window.toggleFunction = function(e) {
   topRanks();
 };
 
+
 window.weightFunction = function(e) {
   let localActive = e.id.replace(/\d+$/,'') + "-" + 'weight';
   metricDetails.filter((f)=>{
@@ -274,6 +287,7 @@ window.weightFunction = function(e) {
   localStorage.setItem(localActive,parseInt(e.value,10));
   weightUpdate(e);
 };
+
 
 let topRanks = () => {
   let rankFill = [];
@@ -294,11 +308,13 @@ let topRanks = () => {
   }
 }
 
+
 cityRankings();
 sectionNode();
 sectionPopulator();
 persistValues();
 topRanks();
+
 
 export {metricDetails} from './data.js';
 export {topRanks};

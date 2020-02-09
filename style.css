@@ -53,7 +53,7 @@ header {
 }
 
 #header {
-  position: sticky;
+  /* position: sticky; */
   top:0px;
   background-color: white;
   z-index: 1;
@@ -73,10 +73,11 @@ header {
 }
 
 #topCities {
-  position: sticky;
-  top: 19px;
+  /* position: sticky; */
+  /* top: 19px; */
   z-index: 1;
-  background-color: white;
+  /* margin-bottom: 15px; */
+  /* background-color: white; */
 }
 
 /* #city {
@@ -170,19 +171,19 @@ header {
 } */
 
 /* All the contents of the metric top container */
-.top {
+.metricHead {
   background-color: #E2E3E4;
   padding: 2px 3px 5px 3px;
 }
 
-.mid {
-  padding: 0 3px 0 3px;
-  background-color: #FFFFFF;
-}
-
-.bottom {
+.metricContent {
   padding: 0 3px 3px 3px;
   background-color: #F7F7F7;
+}
+
+.metricContent .description {
+  display: block;
+  background-color: #FFFFFF;
 }
 
 .top10 {
