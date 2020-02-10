@@ -41,53 +41,47 @@ section {
   position: relative;
 }
 
-header {
-  background-color: transparent;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  padding: 5px;
-  margin: 1px;
-}
-
 #header {
   position: sticky;
   top:0px;
+  height: 100px;
+  display: block;
+  background-image: url(/images/header.png);
   background-color: white;
   z-index: 1;
 }
 
-.sectionHead {
-  background-color: #D6D6D6;
-  padding: 0 0 3px 5px;
-  font-size: larger;
-  font-weight: bold;
+.headerTitle {
+  position: absolute;
+  font-size: xx-large;
+  top: 20px;
+  right: 20px;
 }
 
-.metricContent {
-  /* display: none;  */
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
+.sectionHead {
+  background-color: #D6D6D6;
+  padding: 2px 3px 3px 5px;
+  font-size: larger;
+  font-weight: bold;
 }
 
 #intro {
   background-color: #F7F7F7;
 }
 
+#footer {
+  background-color: #F7F7F7;
+  font-size: smaller;
+}
+
 #topCities {
   position: sticky;
-  top: 19px;
+  top: 100px;
   z-index: 1;
   overflow: unset;
   /* margin-bottom: 15px; */
   /* background-color: white; */
 }
-
-/* #city {
-  position: sticky;
-  top: 200px;
-  z-index: 1;
-} */
 
 #rankings {
   display: inline-block;
@@ -115,16 +109,33 @@ header {
   height:auto; 
 } 
 
-.metric {
-  border-bottom: 1px solid #D6D6D6;
-  /* display: none; */
+.dropdown {
+  position: relative;
+  display: inline-block;
 }
 
 .metricHead {
   font-size: large;
+  background-color: #E2E3E4;
+  padding: 3px 3px 5px 3px;
+  position: relative;
+  /* z-index: 1000; */
 }
 
-.expandSection, .expandMetric {
+.metricContent {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  padding: 0 3px 3px 3px;
+  background-color: #F7F7F7;
+}
+
+.metricContent .description {
+  display: block;
+  background-color: #FFFFFF;
+}
+
+.expandMetric {
   border: 2px solid rgb(184, 214, 102);
   background-color: rgb(242, 255, 207);
   border-radius: 100%;
@@ -141,68 +152,39 @@ header {
 }
 
 #profileTop {
-  /* position: relative; */
+  position: relative;
+  display: block;
   background-color: #F7F7F7;
+  width: 100%;
+  height: 40px;
 }
 
-/* #city {
-  position: relative;
-  display: inline-block;
-  float: left;
-  width: 50%;
+#city {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-#state {
-  position: relative;
-  display: inline-block;
-  float: right;
-  width: 50%;
-} */
+#popDensity {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
 
-/* #cityPop {
-  position: relative;
-  display: inline-block;
-  float: left;
-  width: 33%;
+#cityPop {
+  position: absolute;
+  top: 0;
+  right: 5px;
 }
 
 #metroPop {
-  position: relative;
-  display: inline-block;
-  float: right;
-  width: 33%;
-} */
+  position: absolute;
+  bottom: 0;
+  right: 5px;
+}
 
 /* All the contents of the metric top container */
-.metricHead {
-  background-color: #E2E3E4;
-  padding: 2px 3px 5px 3px;
-}
 
-.metricContent {
-  padding: 0 3px 3px 3px;
-  background-color: #F7F7F7;
-}
-
-.metricContent .description {
-  display: block;
-  background-color: #FFFFFF;
-}
-
-.top10 {
-  border: 2px solid rgb(184, 214, 102);
-  border-radius: 100%;
-  color: rgb(184, 214, 102);
-  background-color: rgb(242, 255, 207);
-  padding: 0 4px 0 4px;
-  margin: 0 0 0 3px;
-  font-weight: 700;
-  font-size: small;
-  float: right;
-  cursor: pointer;
-  position: relative;
-  display: inline-block;
-}
 .popUpTitle {
   text-align: center;
   background-color: rgb(184, 214, 102);;
@@ -225,43 +207,49 @@ input[type=number]{
 }
 
 /* All the contents of the metric bottom container */
-.score {
+.scoreLabel, .score {
   float: right;
   margin-right: 3px;
 }
 
-.scoreLabel, .rank {
+.rank {
   float: right;
+  margin-right: 21px;
 }
 
-.top10 .top10List {
+.top10 {
+  border: 2px solid rgb(184, 214, 102);
+  border-radius: 100%;
+  color: rgb(184, 214, 102);
+  background-color: rgb(242, 255, 207);
+  padding: 0 4px 0 4px;
+  margin: 0 3px 0 3px;
+  font-weight: 700;
+  font-size: small;
+  right: 0;
+  cursor: pointer;
+  position: absolute;
+  display: inline-block;
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+
+.top10List {
   visibility: hidden;
   width: 120px;
   background-color: rgb(242, 255, 207);
   color: #738F28;
   text-align: left;
   padding: 0px 0px 2px 0px;
-  border-radius: 6px;
+  /* border-radius: 6px; */
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   list-style: none;
   border: 2px solid rgb(184, 214, 102);;
-  bottom: 125%;
-  left: 50%;
-  margin-left: -60px;
+  margin-top: -17px;
+  margin-left: -130px;
   opacity: 0;
   transition: opacity 0.3s;
-}
-
-.top10 .top10List::after {
-  /* content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: steelblue transparent transparent transparent; */
 }
 
 .top10:hover .top10List {
@@ -324,25 +312,3 @@ input:checked + .slider:before {
   -ms-transform: translateX(15px);
   transform: translateX(15px);
 }
-
-/* Rounded sliders */
-/* .slider.round {
-  border-radius: 10px;
-}
-
-.slider.round:before {
-  border-radius: 40%;
-} */
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* #weather > div#sunshine,
-#weather > div#precip {
-  display: none;
-  transition: height .5s;
-  height: 0;
-  overflow: hidden;
-} */

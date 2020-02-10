@@ -1,6 +1,10 @@
 import {metricDetails, cityList} from './data.js';
 import {data, weightUpdate, weightedCalc, overallScore, overallRank, dataKeys} from './rankings.js';
 
+let numberWithCommas = (x) => {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
+
 // TOP30 LIST
 let cityRankings = () => {
   const rankSet = document.createElement('div');
@@ -24,11 +28,6 @@ let sectionNode = () => {
   // sectionHead
   sectionHead = document.createElement('div');
   sectionHead.setAttribute('class','sectionHead');
-  const expand = document.createElement('button');
-  expand.setAttribute('class','expandSection');
-  expand.setAttribute('type','button');
-  expand.innerHTML = '+';
-  sectionHead.appendChild(expand);
   const sectionLabel = document.createElement('label');
   sectionLabel.setAttribute('class','sectionLabel');
   sectionHead.appendChild(sectionLabel);
@@ -48,7 +47,11 @@ let sectionNode = () => {
   // metricHead
   metricHead = document.createElement('div');
   metricHead.setAttribute('class','metricHead');
-  metricHead.appendChild(expand.cloneNode(true));
+  const expand = document.createElement('button');
+  expand.setAttribute('class','expandSection');
+  expand.setAttribute('type','button');
+  expand.innerHTML = '+';
+  metricHead.appendChild(expand);
   const name = document.createElement('label');
   name.setAttribute('class','name');
   name.innerHTML = '[Metric Name]';
@@ -209,9 +212,9 @@ window.dropdownChange = function() {
     return f.city.includes(g[0]) &&
            f.state.includes(g[1]);
   })
-  document.getElementById('cityPop').innerHTML = 'City Population: ' + cityRecord[0].cityPop[0];
-  document.getElementById('metroPop').innerHTML = 'Metro Population: ' + cityRecord[0].metroPop[0];
-  document.getElementById('popDensity').innerHTML = 'City Density: ' + cityRecord[0].popDensity[0] + '/mile';
+  document.getElementById('cityPop').innerHTML = 'City Population: ' + numberWithCommas(cityRecord[0].cityPop[0]);
+  document.getElementById('metroPop').innerHTML = 'Metro Population: ' +  numberWithCommas(cityRecord[0].metroPop[0]);
+  document.getElementById('popDensity').innerHTML = 'City Density: ' + numberWithCommas(cityRecord[0].popDensity[0]) + '/sq mile';
   for(let i=5;i<dataKeys.length-1;i++){
   document.querySelector('[id=' + [dataKeys[i]][0] + '] .rank span').innerHTML = cityRecord[0][dataKeys[i]][1];
   let temp = document.querySelector('[id=' + [dataKeys[i]][0] + '] .score');
@@ -351,18 +354,17 @@ for (let i=0; i<sectColl.length; i++){
   sectColl[i].addEventListener("click", function() {
     this.classList.toggle('active');
     let content = this.parentNode.nextElementSibling;
-    // if (content.style.display === "block") {
-    //   content.style.display = "none";
-    // } else {
-    //   content.style.display = "block";
-    // }
+    let test = this.parentNode.nextElementSibling.querySelector('.top10');
     if (content.style.maxHeight){
       content.style.maxHeight = null;
+      test.style.opacity = 0;
     } else {
       content.style.maxHeight = content.scrollHeight + "px";
+      test.style.opacity = 1;
     }
   });
 }
+
 
 export {metricDetails} from './data.js';
 export {topRanks};

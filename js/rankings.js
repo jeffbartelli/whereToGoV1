@@ -133,7 +133,5 @@ weightedCalc();
 overallScore();
 overallRank();
 
-console.log(Data.data[33]);
-
 export {data} from './data.js';
 export {weightUpdate, weightedCalc, overallScore, overallRank, dataKeys};
